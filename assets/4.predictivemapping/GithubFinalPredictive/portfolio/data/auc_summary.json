@@ -1,0 +1,38 @@
+{
+  "v1": {
+    "label": "Original paper approach",
+    "cv": "random 5-fold",
+    "features": "genus + elevation + district one-hot",
+    "n_features": 58,
+    "auc_mean": 0.8657827081401344,
+    "auc_std": 0.0012977445540155947,
+    "auc_folds": [
+      0.8664960381891647,
+      0.8645175312706311,
+      0.8640592702862939,
+      0.8663069606514965,
+      0.8675337403030858
+    ]
+  },
+  "v2": {
+    "label": "Spatial CV + disturbance covariates",
+    "cv": "GroupKFold by district (5 folds, district held out)",
+    "features": "genus + owner + elevation + dist_to_harvest + years_since_harvest + dist_to_road",
+    "n_features": 25,
+    "auc_mean": 0.7049423219845969,
+    "auc_std": 0.06546555919327905,
+    "auc_folds": [
+      0.6773813864452156,
+      0.7980783627269864,
+      0.6091123807811671,
+      0.754375095016571,
+      0.6857643849530448
+    ]
+  },
+  "n_samples": 63503,
+  "n_districts": 41,
+  "n_genera": 81,
+  "target_rate": 0.315292190920114,
+  "median_years_since_harvest": 17.0,
+  "median_dist_to_road_km": 6.363
+}

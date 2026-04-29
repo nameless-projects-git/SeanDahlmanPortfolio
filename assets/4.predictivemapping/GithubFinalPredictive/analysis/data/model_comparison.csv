@@ -1,0 +1,11 @@
+fold,model,auc
+1,"v1 (random CV, district feature)",0.8664960381891647
+2,"v1 (random CV, district feature)",0.8645175312706311
+3,"v1 (random CV, district feature)",0.8640592702862939
+4,"v1 (random CV, district feature)",0.8663069606514965
+5,"v1 (random CV, district feature)",0.8675337403030858
+1,"v2 (spatial CV, no district)",0.6773813864452156
+2,"v2 (spatial CV, no district)",0.7980783627269864
+3,"v2 (spatial CV, no district)",0.6091123807811671
+4,"v2 (spatial CV, no district)",0.754375095016571
+5,"v2 (spatial CV, no district)",0.6857643849530448

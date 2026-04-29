@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<title>Sardinian Farmland · Interactive Visuals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect" />
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "surface-tint": "#546251",
+          "outline-variant": "#c4c8c0",
+          "tertiary": "#615d54",
+          "tertiary-container": "#7a766c",
+          "on-tertiary-container": "#ffffff",
+          "on-background": "#1c1c1a",
+          "surface-container-highest": "#e5e2de",
+          "tertiary-fixed": "#e8e2d6",
+          "on-tertiary-fixed": "#1e1c14",
+          "on-tertiary-fixed-variant": "#4a473e",
+          "on-primary": "#ffffff",
+          "surface": "#fcf9f5",
+          "on-surface": "#1c1c1a",
+          "on-primary-container": "#ffffff",
+          "on-primary-fixed": "#121f11",
+          "on-primary-fixed-variant": "#3c4a3b",
+          "primary-container": "#6b7a68",
+          "on-surface-variant": "#444842",
+          "secondary-fixed-dim": "#ffb5a1",
+          "inverse-on-surface": "#f3f0ec",
+          "inverse-surface": "#31302e",
+          "primary-fixed": "#d7e7d2",
+          "primary-fixed-dim": "#bbcbb6",
+          "on-tertiary": "#ffffff",
+          "secondary-container": "#fcaa94",
+          "tertiary-fixed-dim": "#cbc6ba",
+          "on-secondary-fixed": "#390c02",
+          "on-secondary-fixed-variant": "#703626",
+          "background": "#fcf9f5",
+          "secondary-fixed": "#ffdbd1",
+          "on-secondary": "#ffffff",
+          "secondary": "#8d4d3b",
+          "surface-container-high": "#eae8e4",
+          "surface-container-lowest": "#ffffff",
+          "on-secondary-container": "#783c2c",
+          "surface-bright": "#fcf9f5",
+          "inverse-primary": "#bbcbb6",
+          "primary": "#536150",
+          "surface-container": "#f0ede9",
+          "surface-container-low": "#f6f3ef",
+          "outline": "#747871",
+          "surface-dim": "#dcdad6",
+          "surface-variant": "#e5e2de",
+        },
+        borderRadius: {
+          DEFAULT: "0.25rem",
+          lg: "0.5rem",
+          xl: "0.75rem",
+          "2xl": "1rem",
+          full: "9999px",
+        },
+        spacing: {
+          xs: "4px",
+          sm: "12px",
+          base: "8px",
+          md: "24px",
+          lg: "48px",
+          xl: "80px",
+          gutter: "24px",
+          margin: "32px",
+        },
+        fontFamily: {
+          "headline-xl": ["Newsreader"],
+          "headline-lg": ["Newsreader"],
+          "headline-md": ["Newsreader"],
+          "body-lg": ["Inter"],
+          "body-md": ["Inter"],
+          "label-md": ["Inter"],
+          "label-sm": ["Inter"],
+          "data-tabular": ["Inter"],
+        },
+        fontSize: {
+          "headline-xl": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "400" }],
+          "headline-lg": ["32px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "500" }],
+          "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "500" }],
+          "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+          "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+          "label-md": ["14px", { lineHeight: "1.4", letterSpacing: "0.02em", fontWeight: "600" }],
+          "label-sm": ["12px", { lineHeight: "1.4", letterSpacing: "0.05em", fontWeight: "500" }],
+          "data-tabular": ["14px", { lineHeight: "1.4", fontWeight: "500" }],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body { font-feature-settings: "ss01"; font-variant-numeric: tabular-nums; }
+  .preview-svg { width: 100%; height: 100%; display: block; }
+  .class-pill { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md antialiased flex">
+
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low h-screen w-64 left-0 top-0 fixed flex flex-col p-6 space-y-1 z-40">
+  <div class="mb-10 px-4">
+    <div class="text-primary font-bold text-xs uppercase tracking-[0.1em] leading-tight">Sardinia Land Use Change</div>
+    <div class="text-[10px] text-outline uppercase tracking-widest mt-1">Remote Sensing 2007–2024</div>
+  </div>
+
+  <div class="flex-1 space-y-1">
+    <a class="bg-primary/10 text-primary rounded-lg px-4 py-3 flex items-center gap-3 font-bold text-xs uppercase tracking-[0.1em]" href="index.html">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+      Home
+    </a>
+    <a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container/70 rounded-lg transition-colors flex items-center gap-3 font-bold text-xs uppercase tracking-[0.1em]" href="a_classification.html">
+      <span class="material-symbols-outlined">map</span>
+      Classification
+    </a>
+    <a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container/70 rounded-lg transition-colors flex items-center gap-3 font-bold text-xs uppercase tracking-[0.1em]" href="b_ndvi_temporal.html">
+      <span class="material-symbols-outlined">leaderboard</span>
+      NDVI
+    </a>
+    <a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container/70 rounded-lg transition-colors flex items-center gap-3 font-bold text-xs uppercase tracking-[0.1em]" href="c_sankey_transitions.html">
+      <span class="material-symbols-outlined">sync_alt</span>
+      Sankey
+    </a>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-1 ml-64 px-margin py-xl w-full">
+  <div class="max-w-[1080px] mx-auto">
+  <header class="mb-xl max-w-3xl">
+    <span class="inline-block font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-sm">Sardegna · Italy</span>
+    <h1 class="font-headline-xl text-headline-xl text-on-surface mb-md">Sardinian farmland · interactive visuals</h1>
+    <p class="font-body-lg text-body-lg text-on-surface-variant">
+      Land use classification and NDVI change analysis across Sardinia using Landsat 7 (2007) and Landsat 8
+      (2014, 2020, 2024). Random Trees classifier; per-year overall accuracy 73.5%–80.1% on 262 stratified
+      validation points.
+    </p>
+  </header>
+
+  <!-- Study meta strip -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-gutter mb-xl">
+    <div class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_-8px_rgba(83,97,80,0.08)]">
+      <div class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-2">Study area</div>
+      <div class="font-headline-md text-[18px] text-on-surface">Sardegna, Italy</div>
+    </div>
+    <div class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_-8px_rgba(83,97,80,0.08)]">
+      <div class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-2">Sensors</div>
+      <div class="font-headline-md text-[18px] text-on-surface">Landsat 7 + 8</div>
+    </div>
+    <div class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_-8px_rgba(83,97,80,0.08)]">
+      <div class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-2">Years</div>
+      <div class="font-headline-md text-[18px] text-on-surface font-data-tabular">2007 · 14 · 20 · 24</div>
+    </div>
+    <div class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_-8px_rgba(83,97,80,0.08)]">
+      <div class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-2">Composite</div>
+      <div class="font-headline-md text-[18px] text-on-surface">Jun – Aug median</div>
+    </div>
+  </div>
+
+  <!-- Project cards -->
+  <h2 class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-md">Interactive maps</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-gutter">
+    <!-- Card A · Classification -->
+    <a href="a_classification.html"
+       class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_24px_rgba(69,75,69,0.05)] flex flex-col group cursor-pointer hover:-translate-y-1 transition-transform duration-300">
+      <div class="h-48 rounded-lg mb-md bg-surface-container overflow-hidden">
+        <svg class="preview-svg" viewBox="0 0 280 80" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="280" height="80" fill="#d97f00"/>
+          <path d="M0,52 C40,48 80,60 130,56 C180,52 220,62 280,58 L280,80 L0,80 Z" fill="#3abf66"/>
+          <path d="M0,30 C50,26 90,34 140,30 C190,26 230,34 280,30 L280,52 L0,52 Z" fill="#d9bf0d"/>
+          <rect x="0" y="0" width="280" height="22" fill="#3abf66"/>
+          <path d="M-2,40 Q70,38 140,42 T282,42" stroke="#1c1c1a" stroke-width="1.2" fill="none" opacity="0.45"/>
+          <path d="M120,15 L130,55 L165,60 L160,18 Z" fill="#c44296" opacity="0.85"/>
+          <path d="M218,68 Q244,74 280,72 L280,80 L218,80 Z" fill="#00b6f1"/>
+        </svg>
+      </div>
+      <div class="flex items-center gap-xs mb-sm">
+        <span class="bg-primary-container/30 text-on-primary-fixed-variant px-sm py-xs rounded-full font-label-sm text-label-sm uppercase tracking-widest">A · Map</span>
+      </div>
+      <h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Land use classification</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant mb-lg flex-1">
+        Wall-to-wall classified raster of Sardinia, with a year toggle for 2007, 2014, 2020, 2024. Click a
+        class in the legend to isolate it; overlay the 250 training polygons on top.
+      </p>
+      <div class="mt-auto flex justify-between items-center border-t border-surface-variant pt-md">
+        <span class="font-data-tabular text-data-tabular text-on-surface-variant">Random Trees · ~30 m</span>
+        <span class="flex items-center gap-xs text-primary font-label-md text-label-md group-hover:gap-sm transition-all">
+          Explore map <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </span>
+      </div>
+    </a>
+
+    <!-- Card B · NDVI -->
+    <a href="b_ndvi_temporal.html"
+       class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_24px_rgba(69,75,69,0.05)] flex flex-col group cursor-pointer hover:-translate-y-1 transition-transform duration-300">
+      <div class="h-48 rounded-lg mb-md bg-surface-container overflow-hidden">
+        <svg class="preview-svg" viewBox="0 0 280 80" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="ndviNoise" x="0" y="0">
+              <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7"/>
+              <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.6 -0.3"/>
+              <feComposite in2="SourceGraphic" operator="in"/>
+            </filter>
+            <linearGradient id="ndviRamp" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0%" stop-color="#660016"/>
+              <stop offset="35%" stop-color="#b37f7e"/>
+              <stop offset="55%" stop-color="#fffee6"/>
+              <stop offset="78%" stop-color="#80a08f"/>
+              <stop offset="100%" stop-color="#004238"/>
+            </linearGradient>
+          </defs>
+          <rect width="280" height="80" fill="url(#ndviRamp)"/>
+          <rect width="280" height="80" fill="#fff" filter="url(#ndviNoise)" opacity="0.35"/>
+          <path d="M40,62 Q90,40 130,52 T240,28" stroke="#1c1c1a" stroke-width="0.8" fill="none" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="flex items-center gap-xs mb-sm">
+        <span class="bg-secondary-container/30 text-on-secondary-container px-sm py-xs rounded-full font-label-sm text-label-sm uppercase tracking-widest">B · Dashboard</span>
+      </div>
+      <h2 class="font-headline-md text-headline-md text-on-surface mb-sm">NDVI temporal change</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant mb-lg flex-1">
+        Year toggle drives a live NDVI raster map alongside the distribution histogram, percentile bands,
+        and class-area trajectory across 2007 → 2024.
+      </p>
+      <div class="mt-auto flex justify-between items-center border-t border-surface-variant pt-md">
+        <span class="font-data-tabular text-data-tabular text-on-surface-variant">~218k zones · 4 years</span>
+        <span class="flex items-center gap-xs text-primary font-label-md text-label-md group-hover:gap-sm transition-all">
+          View dashboard <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </span>
+      </div>
+    </a>
+
+    <!-- Card C · Sankey -->
+    <a href="c_sankey_transitions.html"
+       class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_24px_rgba(69,75,69,0.05)] flex flex-col group cursor-pointer hover:-translate-y-1 transition-transform duration-300">
+      <div class="h-48 rounded-lg mb-md bg-surface-container overflow-hidden">
+        <svg class="preview-svg" viewBox="0 0 280 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14,4 C100,4 180,8 266,8 L266,30 C180,30 100,34 14,34 Z" fill="#d9bf0d" opacity="0.55"/>
+          <path d="M14,18 C100,18 180,40 266,40 L266,50 C180,50 100,28 14,28 Z" fill="#3abf66" opacity="0.55"/>
+          <path d="M14,32 C100,32 180,52 266,52 L266,60 C180,60 100,40 14,40 Z" fill="#c44296" opacity="0.55"/>
+          <path d="M14,44 C100,44 180,62 266,62 L266,72 C180,72 100,52 14,52 Z" fill="#d97f00" opacity="0.55"/>
+          <path d="M14,56 C100,56 180,72 266,72 L266,78 C180,78 100,64 14,64 Z" fill="#00b6f1" opacity="0.55"/>
+          <rect x="6" y="4"   width="8" height="14" fill="#d9bf0d"/>
+          <rect x="6" y="18"  width="8" height="14" fill="#3abf66"/>
+          <rect x="6" y="32"  width="8" height="12" fill="#c44296"/>
+          <rect x="6" y="44"  width="8" height="12" fill="#d97f00"/>
+          <rect x="6" y="56"  width="8" height="12" fill="#00b6f1"/>
+          <rect x="266" y="8"  width="8" height="22" fill="#d9bf0d"/>
+          <rect x="266" y="30" width="8" height="20" fill="#3abf66"/>
+          <rect x="266" y="50" width="8" height="10" fill="#c44296"/>
+          <rect x="266" y="60" width="8" height="12" fill="#d97f00"/>
+          <rect x="266" y="72" width="8" height="6"  fill="#00b6f1"/>
+        </svg>
+      </div>
+      <div class="flex items-center gap-xs mb-sm">
+        <span class="bg-tertiary-fixed text-on-tertiary-fixed px-sm py-xs rounded-full font-label-sm text-label-sm uppercase tracking-widest">C · Sankey</span>
+      </div>
+      <h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Land use transitions</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant mb-lg flex-1">
+        5 × 5 transition matrix from 2007 to 2024 as an interactive Sankey. Hover a flow to highlight a
+        single class-to-class transition with km².
+      </p>
+      <div class="mt-auto flex justify-between items-center border-t border-surface-variant pt-md">
+        <span class="font-data-tabular text-data-tabular text-on-surface-variant">From / To · km²</span>
+        <span class="flex items-center gap-xs text-primary font-label-md text-label-md group-hover:gap-sm transition-all">
+          Analyze transitions <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Provenance -->
+  <h2 class="font-label-sm text-label-sm text-outline uppercase tracking-widest mt-xl mb-md">Data &amp; provenance</h2>
+  <div class="bg-surface-container-low rounded-xl p-lg space-y-md shadow-[0_4px_24px_rgba(69,75,69,0.04)]">
+    <p class="font-body-md text-body-md text-on-surface-variant">
+      <span class="text-on-surface font-medium">Source · </span>
+      Vector data exported from <code class="px-1.5 py-0.5 bg-surface-container rounded text-on-surface text-[13px]">SardinianTRAININGpolygonsUSE.shp</code>
+      (250 polygons, WGS 84) and the <code class="px-1.5 py-0.5 bg-surface-container rounded text-on-surface text-[13px]">RemoteSensingFinalProject.gdb</code>
+      file geodatabase. Transition matrix decoded from <code class="px-1.5 py-0.5 bg-surface-container rounded text-on-surface text-[13px]">Tabulat_2007_2024</code>
+      + the From_To_Matrix sheet of the project workbook. Per-zone NDVI summary statistics computed from
+      <code class="px-1.5 py-0.5 bg-surface-container rounded text-on-surface text-[13px]">Zonal_NDVI_{2007,2014,2020,2024}</code>
+      (~218k zones each).
+    </p>
+    <p class="font-body-md text-body-md text-on-surface-variant">
+      <span class="text-on-surface font-medium">Pipeline · </span>
+      Imagery cloud-masked and reduced to NDVI / SAVI in Google Earth Engine, classified in ArcGIS Pro using
+      Random Trees (5 classes), zonal stats and tabulate area produced in ArcGIS, then exported here as
+      GeoJSON + JSON for the browser.
+    </p>
+    <p class="font-body-md text-body-md text-on-surface-variant">
+      <span class="text-on-surface font-medium">Re-running rasters · </span>
+      The original .tif rasters live on Google Drive. To regenerate, see
+      <code class="px-1.5 py-0.5 bg-surface-container rounded text-on-surface text-[13px]">GEE_export_notebook.ipynb</code>
+      in this folder for steps to (E) build a COG NDVI swipe layer and (F) publish a Google Earth Engine App.
+    </p>
+  </div>
+  </div>
+</main>
+
+</body>
+</html>

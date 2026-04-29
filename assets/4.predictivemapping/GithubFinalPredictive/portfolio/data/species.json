@@ -1,0 +1,814 @@
+[
+  {
+    "SCIENTIFIC": "Hieracium caespitosum",
+    "category": "harvest_enhanced",
+    "districts": 14,
+    "baseline_occ": 3253.0,
+    "harvest_occ": 26939.0
+  },
+  {
+    "SCIENTIFIC": "Centaurea stoebe ssp. micranthos",
+    "category": "harvest_enhanced",
+    "districts": 39,
+    "baseline_occ": 2956.0,
+    "harvest_occ": 24201.0
+  },
+  {
+    "SCIENTIFIC": "Leucanthemum vulgare",
+    "category": "harvest_enhanced",
+    "districts": 31,
+    "baseline_occ": 1767.0,
+    "harvest_occ": 17623.0
+  },
+  {
+    "SCIENTIFIC": "Hypericum perforatum",
+    "category": "harvest_enhanced",
+    "districts": 35,
+    "baseline_occ": 2784.0,
+    "harvest_occ": 15421.0
+  },
+  {
+    "SCIENTIFIC": "Cirsium arvense",
+    "category": "harvest_enhanced",
+    "districts": 46,
+    "baseline_occ": 6067.0,
+    "harvest_occ": 13716.0
+  },
+  {
+    "SCIENTIFIC": "Cynoglossum officinale",
+    "category": "harvest_enhanced",
+    "districts": 41,
+    "baseline_occ": 3348.0,
+    "harvest_occ": 11203.0
+  },
+  {
+    "SCIENTIFIC": "Centaurea biebersteinii",
+    "category": "harvest_enhanced",
+    "districts": 25,
+    "baseline_occ": 3381.0,
+    "harvest_occ": 10039.0
+  },
+  {
+    "SCIENTIFIC": "Tanacetum vulgare",
+    "category": "harvest_enhanced",
+    "districts": 29,
+    "baseline_occ": 835.0,
+    "harvest_occ": 9796.0
+  },
+  {
+    "SCIENTIFIC": "Chondrilla juncea",
+    "category": "harvest_enhanced",
+    "districts": 35,
+    "baseline_occ": 4354.0,
+    "harvest_occ": 6995.0
+  },
+  {
+    "SCIENTIFIC": "Centaurea maculosa",
+    "category": "harvest_enhanced",
+    "districts": 46,
+    "baseline_occ": 6166.0,
+    "harvest_occ": 6697.0
+  },
+  {
+    "SCIENTIFIC": "Cirsium vulgare",
+    "category": "harvest_enhanced",
+    "districts": 32,
+    "baseline_occ": 1491.0,
+    "harvest_occ": 4110.0
+  },
+  {
+    "SCIENTIFIC": "Linaria vulgaris",
+    "category": "harvest_enhanced",
+    "districts": 37,
+    "baseline_occ": 4966.0,
+    "harvest_occ": 3976.0
+  },
+  {
+    "SCIENTIFIC": "Verbascum thapsus",
+    "category": "harvest_enhanced",
+    "districts": 24,
+    "baseline_occ": 664.0,
+    "harvest_occ": 3763.0
+  },
+  {
+    "SCIENTIFIC": "Hieracium aurantiacum",
+    "category": "harvest_enhanced",
+    "districts": 21,
+    "baseline_occ": 428.0,
+    "harvest_occ": 3272.0
+  },
+  {
+    "SCIENTIFIC": "Linaria dalmatica",
+    "category": "harvest_enhanced",
+    "districts": 25,
+    "baseline_occ": 381.0,
+    "harvest_occ": 2585.0
+  },
+  {
+    "SCIENTIFIC": "Potentilla recta",
+    "category": "harvest_enhanced",
+    "districts": 29,
+    "baseline_occ": 1300.0,
+    "harvest_occ": 1991.0
+  },
+  {
+    "SCIENTIFIC": "Chrysanthemum leucanthemum",
+    "category": "harvest_enhanced",
+    "districts": 24,
+    "baseline_occ": 421.0,
+    "harvest_occ": 1199.0
+  },
+  {
+    "SCIENTIFIC": "Carduus nutans",
+    "category": "harvest_enhanced",
+    "districts": 23,
+    "baseline_occ": 1975.0,
+    "harvest_occ": 823.0
+  },
+  {
+    "SCIENTIFIC": "Centaurea stoebe",
+    "category": "harvest_enhanced",
+    "districts": 6,
+    "baseline_occ": 229.0,
+    "harvest_occ": 800.0
+  },
+  {
+    "SCIENTIFIC": "Echium vulgare",
+    "category": "harvest_enhanced",
+    "districts": 7,
+    "baseline_occ": 74.0,
+    "harvest_occ": 729.0
+  },
+  {
+    "SCIENTIFIC": "Hieracium pratense",
+    "category": "harvest_enhanced",
+    "districts": 10,
+    "baseline_occ": 72.0,
+    "harvest_occ": 712.0
+  },
+  {
+    "SCIENTIFIC": "Euphorbia esula",
+    "category": "harvest_enhanced",
+    "districts": 31,
+    "baseline_occ": 12372.0,
+    "harvest_occ": 701.0
+  },
+  {
+    "SCIENTIFIC": "Bromus tectorum",
+    "category": "harvest_enhanced",
+    "districts": 23,
+    "baseline_occ": 481.0,
+    "harvest_occ": 476.0
+  },
+  {
+    "SCIENTIFIC": "Linaria dalmatica ssp. dalmatica",
+    "category": "harvest_enhanced",
+    "districts": 19,
+    "baseline_occ": 149.0,
+    "harvest_occ": 425.0
+  },
+  {
+    "SCIENTIFIC": "Ventenata dubia",
+    "category": "harvest_enhanced",
+    "districts": 8,
+    "baseline_occ": 150.0,
+    "harvest_occ": 378.0
+  },
+  {
+    "SCIENTIFIC": "Berteroa incana",
+    "category": "harvest_enhanced",
+    "districts": 23,
+    "baseline_occ": 730.0,
+    "harvest_occ": 370.0
+  },
+  {
+    "SCIENTIFIC": "Onopordum acanthium",
+    "category": "harvest_enhanced",
+    "districts": 25,
+    "baseline_occ": 354.0,
+    "harvest_occ": 309.0
+  },
+  {
+    "SCIENTIFIC": "Senecio jacobaea",
+    "category": "harvest_enhanced",
+    "districts": 8,
+    "baseline_occ": 1138.0,
+    "harvest_occ": 277.0
+  },
+  {
+    "SCIENTIFIC": "Centaurea diffusa",
+    "category": "harvest_enhanced",
+    "districts": 30,
+    "baseline_occ": 297.0,
+    "harvest_occ": 188.0
+  },
+  {
+    "SCIENTIFIC": "Lotus corniculatus",
+    "category": "harvest_enhanced",
+    "districts": 2,
+    "baseline_occ": 10.0,
+    "harvest_occ": 183.0
+  },
+  {
+    "SCIENTIFIC": "Cardaria draba",
+    "category": "harvest_enhanced",
+    "districts": 23,
+    "baseline_occ": 299.0,
+    "harvest_occ": 173.0
+  },
+  {
+    "SCIENTIFIC": "Arctium minus",
+    "category": "harvest_enhanced",
+    "districts": 5,
+    "baseline_occ": 104.0,
+    "harvest_occ": 107.0
+  },
+  {
+    "SCIENTIFIC": "Isatis tinctoria",
+    "category": "harvest_enhanced",
+    "districts": 12,
+    "baseline_occ": 404.0,
+    "harvest_occ": 96.0
+  },
+  {
+    "SCIENTIFIC": "Centaurea solstitialis",
+    "category": "harvest_enhanced",
+    "districts": 12,
+    "baseline_occ": 252.0,
+    "harvest_occ": 94.0
+  },
+  {
+    "SCIENTIFIC": "Convolvulus arvensis",
+    "category": "harvest_enhanced",
+    "districts": 28,
+    "baseline_occ": 179.0,
+    "harvest_occ": 72.0
+  },
+  {
+    "SCIENTIFIC": "Trifolium arvense",
+    "category": "harvest_enhanced",
+    "districts": 2,
+    "baseline_occ": 10.0,
+    "harvest_occ": 67.0
+  },
+  {
+    "SCIENTIFIC": "Artemisia absinthium",
+    "category": "harvest_enhanced",
+    "districts": 1,
+    "baseline_occ": 3.0,
+    "harvest_occ": 48.0
+  },
+  {
+    "SCIENTIFIC": "Hyoscyamus niger",
+    "category": "harvest_enhanced",
+    "districts": 18,
+    "baseline_occ": 352.0,
+    "harvest_occ": 45.0
+  },
+  {
+    "SCIENTIFIC": "Hieracium piloselloides",
+    "category": "harvest_enhanced",
+    "districts": 3,
+    "baseline_occ": 40.0,
+    "harvest_occ": 42.0
+  },
+  {
+    "SCIENTIFIC": "Polygonum cuspidatum",
+    "category": "harvest_enhanced",
+    "districts": 9,
+    "baseline_occ": 84.0,
+    "harvest_occ": 41.0
+  },
+  {
+    "SCIENTIFIC": "Ranunculus acris",
+    "category": "harvest_enhanced",
+    "districts": 10,
+    "baseline_occ": 103.0,
+    "harvest_occ": 39.0
+  },
+  {
+    "SCIENTIFIC": "Cytisus scoparius",
+    "category": "harvest_enhanced",
+    "districts": 7,
+    "baseline_occ": 23.0,
+    "harvest_occ": 29.0
+  },
+  {
+    "SCIENTIFIC": "Linaria genistifolia ssp. dalmatica",
+    "category": "harvest_enhanced",
+    "districts": 10,
+    "baseline_occ": 213.0,
+    "harvest_occ": 28.0
+  },
+  {
+    "SCIENTIFIC": "Lathyrus latifolius",
+    "category": "harvest_enhanced",
+    "districts": 5,
+    "baseline_occ": 25.0,
+    "harvest_occ": 27.0
+  },
+  {
+    "SCIENTIFIC": "Carduus acanthoides",
+    "category": "harvest_enhanced",
+    "districts": 7,
+    "baseline_occ": 39.0,
+    "harvest_occ": 25.0
+  },
+  {
+    "SCIENTIFIC": "Crupina vulgaris",
+    "category": "harvest_enhanced",
+    "districts": 7,
+    "baseline_occ": 34.0,
+    "harvest_occ": 24.0
+  },
+  {
+    "SCIENTIFIC": "Hypochaeris radicata",
+    "category": "harvest_enhanced",
+    "districts": 3,
+    "baseline_occ": 4.0,
+    "harvest_occ": 22.0
+  },
+  {
+    "SCIENTIFIC": "Salvia aethiopis",
+    "category": "harvest_enhanced",
+    "districts": 3,
+    "baseline_occ": 27.0,
+    "harvest_occ": 17.0
+  },
+  {
+    "SCIENTIFIC": "Dianthus armeria",
+    "category": "harvest_enhanced",
+    "districts": 5,
+    "baseline_occ": 8.0,
+    "harvest_occ": 15.0
+  },
+  {
+    "SCIENTIFIC": "Cichorium intybus",
+    "category": "harvest_enhanced",
+    "districts": 6,
+    "baseline_occ": 23.0,
+    "harvest_occ": 15.0
+  },
+  {
+    "SCIENTIFIC": "Achillea nobilis",
+    "category": "harvest_enhanced",
+    "districts": 2,
+    "baseline_occ": 2.0,
+    "harvest_occ": 14.0
+  },
+  {
+    "SCIENTIFIC": "Nardus stricta",
+    "category": "harvest_enhanced",
+    "districts": 2,
+    "baseline_occ": 27.0,
+    "harvest_occ": 13.0
+  },
+  {
+    "SCIENTIFIC": "Acroptilon repens",
+    "category": "harvest_enhanced",
+    "districts": 8,
+    "baseline_occ": 40.0,
+    "harvest_occ": 12.0
+  },
+  {
+    "SCIENTIFIC": "Hieracium praealtum",
+    "category": "harvest_enhanced",
+    "districts": 1,
+    "baseline_occ": 6.0,
+    "harvest_occ": 12.0
+  },
+  {
+    "SCIENTIFIC": "Hieracium",
+    "category": "harvest_enhanced",
+    "districts": 2,
+    "baseline_occ": 2.0,
+    "harvest_occ": 9.0
+  },
+  {
+    "SCIENTIFIC": "Ambrosia tomentosa",
+    "category": "harvest_enhanced",
+    "districts": 1,
+    "baseline_occ": 2.0,
+    "harvest_occ": 5.0
+  },
+  {
+    "SCIENTIFIC": "Bromus japonicus",
+    "category": "harvest_enhanced",
+    "districts": 3,
+    "baseline_occ": 3.0,
+    "harvest_occ": 5.0
+  },
+  {
+    "SCIENTIFIC": "Lepidium latifolium",
+    "category": "harvest_enhanced",
+    "districts": 8,
+    "baseline_occ": 14.0,
+    "harvest_occ": 5.0
+  },
+  {
+    "SCIENTIFIC": "Digitalis purpurea",
+    "category": "harvest_enhanced",
+    "districts": 2,
+    "baseline_occ": 12.0,
+    "harvest_occ": 4.0
+  },
+  {
+    "SCIENTIFIC": "Centaurea debeauxii",
+    "category": "harvest_enhanced",
+    "districts": 2,
+    "baseline_occ": 4.0,
+    "harvest_occ": 4.0
+  },
+  {
+    "SCIENTIFIC": "Polygonum bohemicum",
+    "category": "harvest_enhanced",
+    "districts": 3,
+    "baseline_occ": 18.0,
+    "harvest_occ": 4.0
+  },
+  {
+    "SCIENTIFIC": "Tribulus terrestris",
+    "category": "harvest_enhanced",
+    "districts": 12,
+    "baseline_occ": 57.0,
+    "harvest_occ": 4.0
+  },
+  {
+    "SCIENTIFIC": "Lepidium draba",
+    "category": "harvest_enhanced",
+    "districts": 2,
+    "baseline_occ": 2.0,
+    "harvest_occ": 3.0
+  },
+  {
+    "SCIENTIFIC": "Thlaspi arvense",
+    "category": "harvest_enhanced",
+    "districts": 1,
+    "baseline_occ": 4.0,
+    "harvest_occ": 2.0
+  },
+  {
+    "SCIENTIFIC": "Descurainia sophia",
+    "category": "harvest_enhanced",
+    "districts": 1,
+    "baseline_occ": 9.0,
+    "harvest_occ": 2.0
+  },
+  {
+    "SCIENTIFIC": "Astragalus cicer",
+    "category": "harvest_enhanced",
+    "districts": 1,
+    "baseline_occ": 3.0,
+    "harvest_occ": 2.0
+  },
+  {
+    "SCIENTIFIC": "Lythrum salicaria",
+    "category": "harvest_enhanced",
+    "districts": 5,
+    "baseline_occ": 19.0,
+    "harvest_occ": 2.0
+  },
+  {
+    "SCIENTIFIC": "Chenopodium berlandieri",
+    "category": "harvest_enhanced",
+    "districts": 1,
+    "baseline_occ": 36.0,
+    "harvest_occ": 2.0
+  },
+  {
+    "SCIENTIFIC": "Ceratocephala testiculata",
+    "category": "harvest_enhanced",
+    "districts": 4,
+    "baseline_occ": 29.0,
+    "harvest_occ": 2.0
+  },
+  {
+    "SCIENTIFIC": "Conium maculatum",
+    "category": "harvest_enhanced",
+    "districts": 14,
+    "baseline_occ": 46.0,
+    "harvest_occ": 2.0
+  },
+  {
+    "SCIENTIFIC": "Heracleum mantegazzianum",
+    "category": "harvest_enhanced",
+    "districts": 2,
+    "baseline_occ": 3.0,
+    "harvest_occ": 1.0
+  },
+  {
+    "SCIENTIFIC": "Melilotus officinalis",
+    "category": "harvest_enhanced",
+    "districts": 1,
+    "baseline_occ": 2.0,
+    "harvest_occ": 1.0
+  },
+  {
+    "SCIENTIFIC": "Rosa canina",
+    "category": "harvest_enhanced",
+    "districts": 2,
+    "baseline_occ": 6.0,
+    "harvest_occ": 1.0
+  },
+  {
+    "SCIENTIFIC": "Tamarix ramosissima",
+    "category": "harvest_enhanced",
+    "districts": 4,
+    "baseline_occ": 13.0,
+    "harvest_occ": 1.0
+  },
+  {
+    "SCIENTIFIC": "Ailanthus altissima",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 3.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Centaurea cyanus",
+    "category": "baseline_only",
+    "districts": 3,
+    "baseline_occ": 3.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Centaurea nigrescens",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 1.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Aegilops cylindrica",
+    "category": "baseline_only",
+    "districts": 4,
+    "baseline_occ": 7.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Arctium",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 6.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Anchusa arvensis",
+    "category": "baseline_only",
+    "districts": 2,
+    "baseline_occ": 4.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Anthriscus caucalis",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 2.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Bromopsis inermis",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 10.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Caragana arborescens",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 1.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Cardaria chalapensis",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 2.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Dipsacus fullonum",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 4.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Descurainia",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 1.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Cicuta maculata",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 1.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Cuscuta americana",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 1.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Cirsium",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 2.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Carduus pycnocephalus",
+    "category": "baseline_only",
+    "districts": 3,
+    "baseline_occ": 23.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Ceanothus maritimus",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 1.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Euphorbia myrsinites",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 1.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Lychnis coronaria",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 14.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Linaria",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 1.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Iris pseudacorus",
+    "category": "baseline_only",
+    "districts": 2,
+    "baseline_occ": 2.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Hesperis matronalis",
+    "category": "baseline_only",
+    "districts": 3,
+    "baseline_occ": 12.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Elaeagnus angustifolia",
+    "category": "baseline_only",
+    "districts": 2,
+    "baseline_occ": 4.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Gypsophila paniculata",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 1.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Euphorbia dentata",
+    "category": "baseline_only",
+    "districts": 2,
+    "baseline_occ": 2.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Polygonum",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 25.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Saponaria officinalis",
+    "category": "baseline_only",
+    "districts": 2,
+    "baseline_occ": 5.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Salvia sclarea",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 5.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Salsola kali",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 1.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Rubus armeniacus",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 8.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Ranunculus repens",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 1.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Phragmites australis",
+    "category": "baseline_only",
+    "districts": 2,
+    "baseline_occ": 2.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Phalaris arundinacea",
+    "category": "baseline_only",
+    "districts": 2,
+    "baseline_occ": 87.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Polygonum sachalinense",
+    "category": "baseline_only",
+    "districts": 2,
+    "baseline_occ": 2.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Taeniatherum caput-medusae",
+    "category": "baseline_only",
+    "districts": 3,
+    "baseline_occ": 17.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Sorghum halepense",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 1.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Sonchus arvensis",
+    "category": "baseline_only",
+    "districts": 4,
+    "baseline_occ": 7.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Solanum rostratum",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 1.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Sisymbrium altissimum",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 1.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Solanum elaeagnifolium",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 2.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Trifolium pratense",
+    "category": "baseline_only",
+    "districts": 1,
+    "baseline_occ": 1.0,
+    "harvest_occ": 0.0
+  },
+  {
+    "SCIENTIFIC": "Vinca minor",
+    "category": "baseline_only",
+    "districts": 2,
+    "baseline_occ": 7.0,
+    "harvest_occ": 0.0
+  }
+]

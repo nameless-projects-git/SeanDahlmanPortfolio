@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Sean Dahlman | Geospatial Analyst</title>
+    <meta name="description" content="GIS professional with 6+ years of experience in municipal operations, environmental monitoring, GeoAI, and geospatial automation."/>
+    <meta property="og:title" content="Sean Dahlman | Geospatial Analyst"/>
+    <meta property="og:description" content="GIS professional specializing in spatial modeling, remote sensing, GeoAI, and ecological informatics."/>
+    <meta property="og:type" content="website"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#93000a",
+                        "tertiary": "#b8cf88",
+                        "secondary-container": "#703b1f",
+                        "tertiary-fixed-dim": "#b8cf88",
+                        "on-primary-fixed": "#0a2011",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#c5e8f6",
+                        "on-primary": "#1f3525",
+                        "surface-dim": "#00161d",
+                        "inverse-primary": "#4c6451",
+                        "on-surface": "#c5e8f6",
+                        "inverse-on-surface": "#11353f",
+                        "tertiary-fixed": "#d4eca2",
+                        "on-secondary-fixed-variant": "#6d381d",
+                        "outline": "#8d928b",
+                        "surface-variant": "#163944",
+                        "surface-container-lowest": "#001016",
+                        "on-tertiary": "#253600",
+                        "surface-container-high": "#082e38",
+                        "primary": "#b3cdb6",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-container": "#859a59",
+                        "surface-tint": "#b3cdb6",
+                        "on-primary-container": "#809983",
+                        "primary-fixed": "#cfe9d1",
+                        "on-secondary-fixed": "#351000",
+                        "surface-container-low": "#001f28",
+                        "primary-container": "#1a3020",
+                        "secondary-fixed": "#ffdbcc",
+                        "outline-variant": "#434842",
+                        "tertiary-container": "#213000",
+                        "on-primary-fixed-variant": "#354c3a",
+                        "on-background": "#c5e8f6",
+                        "on-secondary-container": "#f2a783",
+                        "on-tertiary-fixed-variant": "#3b4d14",
+                        "on-secondary": "#522309",
+                        "surface": "#00161d",
+                        "surface-bright": "#1b3e48",
+                        "on-error": "#690005",
+                        "background": "#00161d",
+                        "on-surface-variant": "#c3c8c0",
+                        "on-tertiary-fixed": "#141f00",
+                        "surface-container": "#00232d",
+                        "surface-container-highest": "#163944",
+                        "secondary-fixed-dim": "#ffb693",
+                        "secondary": "#ffb693",
+                        "primary-fixed-dim": "#b3cdb6",
+                        "terra": "#C17D5C",
+                        "moss": "#4A5D23",
+                        "slate-accent": "#5B7C88"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        xl: "5rem",
+                        "max-width": "1280px",
+                        md: "1.5rem",
+                        xs: "0.5rem",
+                        lg: "3rem",
+                        gutter: "1.5rem",
+                        sm: "1rem",
+                        unit: "4px"
+                    },
+                    fontFamily: {
+                        heading: ["Newsreader", "serif"],
+                        body: ["Inter", "sans-serif"]
+                    },
+                    fontSize: {
+                        h1: ["3.5rem", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        h2: ["2.25rem", { lineHeight: "1.2", fontWeight: "500" }],
+                        h3: ["1.5rem", { lineHeight: "1.3", fontWeight: "500" }],
+                        "body-lg": ["1.125rem", { lineHeight: "1.7", fontWeight: "400" }],
+                        "body-md": ["1rem", { lineHeight: "1.6", fontWeight: "400" }],
+                        "label-caps": ["0.75rem", { lineHeight: "1.0", letterSpacing: "0.1em", fontWeight: "600" }],
+                        caption: ["0.875rem", { lineHeight: "1.4", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #00161d;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Fade-in on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger children */
+        .stagger > .reveal:nth-child(1) { transition-delay: 0s; }
+        .stagger > .reveal:nth-child(2) { transition-delay: 0.08s; }
+        .stagger > .reveal:nth-child(3) { transition-delay: 0.16s; }
+        .stagger > .reveal:nth-child(4) { transition-delay: 0.24s; }
+        .stagger > .reveal:nth-child(5) { transition-delay: 0.32s; }
+        .stagger > .reveal:nth-child(6) { transition-delay: 0.40s; }
+
+        /* Hero entrance */
+        @keyframes heroSlideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-anim { animation: heroSlideUp 0.9s cubic-bezier(.22,1,.36,1) forwards; }
+        .hero-anim-delay-1 { animation-delay: 0.15s; opacity: 0; }
+        .hero-anim-delay-2 { animation-delay: 0.3s; opacity: 0; }
+        .hero-anim-delay-3 { animation-delay: 0.45s; opacity: 0; }
+
+        /* Coordinate crosshair decoration */
+        .crosshair::before,
+        .crosshair::after {
+            content: '';
+            position: absolute;
+            background: rgba(91, 124, 136, 0.15);
+        }
+        .crosshair::before {
+            width: 1px; height: 24px;
+            top: 12px; right: 40px;
+        }
+        .crosshair::after {
+            width: 24px; height: 1px;
+            top: 23px; right: 29px;
+        }
+
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+
+        /* Mobile nav */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen pt-[72px] md:pt-[80px]">
+
+<div id="topo-a" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;"></div>
+<div id="topo-b" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;mix-blend-mode:screen;opacity:0;"></div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- TOP NAV -->
+<!-- ═══════════════════════════════════════════ -->
+<header class="bg-primary-container/80 backdrop-blur-lg fixed top-0 w-full z-50 border-b border-slate-accent/20">
+    <div class="flex justify-between items-center w-full px-6 md:px-8 py-4 max-w-[1280px] mx-auto">
+        <a href="#" class="text-lg font-semibold tracking-[0.25em] text-primary-fixed uppercase font-body">
+            Sean Dahlman
+        </a>
+        <nav class="hidden md:flex items-center gap-8 font-heading text-[0.95rem]">
+            <a class="text-on-surface-variant hover:text-primary-fixed transition-colors" href="#experience">Experience</a>
+            <a class="text-on-surface-variant hover:text-primary-fixed transition-colors" href="#projects">Projects</a>
+            <a class="text-on-surface-variant hover:text-primary-fixed transition-colors" href="#skills">Skills</a>
+            <a class="text-on-surface-variant hover:text-primary-fixed transition-colors" href="#education">Education</a>
+            <a class="text-on-surface-variant hover:text-primary-fixed transition-colors" href="#contact">Contact</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <a href="portfolio/SeanDahlman_CV.pdf" download class="hidden md:inline-block bg-terra text-white px-5 py-2 rounded text-label-caps uppercase tracking-wider hover:bg-terra/80 transition-colors">
+                Download CV
+            </a>
+            <!-- Mobile hamburger -->
+            <button id="menu-toggle" class="md:hidden text-on-surface-variant hover:text-primary-fixed transition-colors" aria-label="Toggle menu">
+                <span class="material-symbols-outlined text-[28px]">menu</span>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile dropdown -->
+    <div id="mobile-menu" class="md:hidden bg-primary-container/95 backdrop-blur-lg border-t border-slate-accent/10">
+        <div class="flex flex-col px-6 py-4 gap-4 font-heading">
+            <a class="text-on-surface-variant hover:text-primary-fixed transition-colors py-1" href="#experience" onclick="closeMobileMenu()">Experience</a>
+            <a class="text-on-surface-variant hover:text-primary-fixed transition-colors py-1" href="#projects" onclick="closeMobileMenu()">Projects</a>
+            <a class="text-on-surface-variant hover:text-primary-fixed transition-colors py-1" href="#skills" onclick="closeMobileMenu()">Skills</a>
+            <a class="text-on-surface-variant hover:text-primary-fixed transition-colors py-1" href="#education" onclick="closeMobileMenu()">Education</a>
+            <a class="text-on-surface-variant hover:text-primary-fixed transition-colors py-1" href="#contact" onclick="closeMobileMenu()">Contact</a>
+            <a href="portfolio/SeanDahlman_CV.pdf" download class="bg-terra text-white px-5 py-2 rounded text-label-caps uppercase tracking-wider text-center hover:bg-terra/80 transition-colors mt-2">
+                Download CV
+            </a>
+        </div>
+    </div>
+</header>
+
+<main class="overflow-x-hidden">
+<div class="max-w-[1280px] mx-auto px-gutter">
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- HERO -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="min-h-[80vh] flex flex-col md:flex-row items-center justify-center gap-lg pt-md pb-md">
+        <div class="w-full md:w-7/12 flex flex-col items-start z-10">
+            <p class="font-body text-label-caps text-outline uppercase tracking-[0.2em] mb-4 hero-anim">Geospatial Analyst</p>
+            <h1 class="font-heading text-h1 text-primary-fixed mb-sm hero-anim hero-anim-delay-1 leading-[1.05]">
+                Sean<br/>Dahlman
+            </h1>
+            <p class="font-body text-body-lg text-on-surface-variant max-w-xl hero-anim hero-anim-delay-2">
+                GIS professional with 6+ years of experience spanning municipal operations, environmental monitoring, and geospatial automation. Currently completing an MSc in GIS at Vrije Universiteit Amsterdam, with thesis research applying multi-modal deep learning to urban tree canopy detection.
+            </p>
+            <div class="flex gap-4 mt-8 hero-anim hero-anim-delay-3">
+                <a href="#projects" class="bg-terra text-white px-6 py-3 rounded text-label-caps uppercase tracking-wider hover:bg-terra/80 transition-colors">
+                    View Projects
+                </a>
+                <a href="#contact" class="border border-slate-accent/30 text-on-surface-variant px-6 py-3 rounded text-label-caps uppercase tracking-wider hover:bg-slate-accent/10 transition-colors">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+        <div class="w-full md:w-5/12 relative flex justify-center items-center mt-12 md:mt-0">
+            <div class="relative w-full max-w-[380px] aspect-square">
+                <!-- Decorative rings -->
+                <div class="absolute inset-0 border border-slate-accent/10 rounded-full"></div>
+                <div class="absolute inset-4 border border-slate-accent/8 rounded-full"></div>
+                <div class="absolute inset-8 border border-moss/15 rounded-full"></div>
+                <!-- Headshot -->
+                <img alt="Sean Dahlman headshot" class="w-full h-full object-cover object-top rounded-full" src="assets/photos/personalphoto.jpeg"/>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- EXPERIENCE -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="pt-md pb-xl" id="experience">
+        <div class="flex items-center gap-md mb-lg reveal">
+            <h2 class="font-heading text-h2 text-primary-fixed whitespace-nowrap">Experience</h2>
+            <div class="h-px bg-outline/20 flex-grow"></div>
+        </div>
+        <div class="flex flex-col gap-md stagger">
+            <!-- Card 1: City of Boise -->
+            <div class="bg-primary-container border border-slate-accent/20 rounded-lg p-lg relative crosshair reveal">
+                <h3 class="font-heading text-h3 text-secondary mb-xs">GIS Analyst</h3>
+                <p class="font-body text-label-caps text-tertiary mb-sm uppercase tracking-wider">City of Boise, ID · December 2023 – October 2024</p>
+                <ul class="font-body text-body-md text-on-surface-variant mb-4 space-y-1 list-disc list-outside pl-4">
+                    <li>Automated daily data validation workflows in Python and Bash, reducing processing time from 4 hours to 45 minutes (over 80% reduction).</li>
+                    <li>Designed and maintained internal and third-party geospatial data products supporting city operations for 250,000 residents.</li>
+                    <li>Performed complex geospatial analysis to generate statistics, discover correlations, and support city service and planning decisions.</li>
+                    <li>Maintained spatial assets within VueWorks CMMS; verified accuracy of field-collected spatial data and enforced city GIS standards.</li>
+                    <li>Managed relational databases, attribute data entry, and metadata for enterprise geospatial features.</li>
+                    <li>Provided GIS software support to city users, resolved end-user data problems, and authored training manuals and procedures.</li>
+                    <li>Participated in enterprise and department-level GIS planning and coordination meetings.</li>
+                </ul>
+                <div class="flex gap-2 flex-wrap">
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">Python</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">ArcGIS Pro</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">PostgreSQL</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">VueWorks</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">Bash</span>
+                </div>
+            </div>
+            <!-- Card 2: USDA Forest Service -->
+            <div class="bg-primary-container border border-slate-accent/20 rounded-lg p-lg relative crosshair reveal">
+                <h3 class="font-heading text-h3 text-secondary mb-xs">Biological Technician</h3>
+                <p class="font-body text-label-caps text-tertiary mb-sm uppercase tracking-wider">USDA Forest Service · April 2018 – November 2023</p>
+                <ul class="font-body text-body-md text-on-surface-variant mb-4 space-y-1 list-disc list-outside pl-4">
+                    <li>Conducted GIS analysis, data management, and data entry through Natural Resource Manager (NRM) via ArcGIS Pro.</li>
+                    <li>Performed Aerial Detection Surveying (ADS) from aircraft to map forest health conditions across multi-state regions.</li>
+                    <li>Executed traverse surveys using RTK Trimble GPS, theodolites, and electronic distance measuring systems.</li>
+                    <li>Managed spatial data for Threatened, Endangered, and Sensitive species surveys through NRM.</li>
+                    <li>Conducted vegetation habitat data analysis using Rocky Mountain Research Station standards.</li>
+                    <li>Led crews of seasonal employees in field data collection; wrote and secured two environmental grants.</li>
+                    <li>Assisted with drone flights for vegetation surveying; maintained technical reports, grants, and agreements.</li>
+                </ul>
+                <div class="flex gap-2 flex-wrap">
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">ArcGIS Pro</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">RTK GPS</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">NRM</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">Drone Ops</span>
+                </div>
+            </div>
+            <!-- Card 3: Somerset Pacific -->
+            <div class="bg-primary-container border border-slate-accent/20 rounded-lg p-lg relative crosshair reveal">
+                <h3 class="font-heading text-h3 text-secondary mb-xs">Web Developer <span class="text-outline/60 font-body text-caption normal-case tracking-normal">(Part-time / Weekend Contractor)</span></h3>
+                <p class="font-body text-label-caps text-tertiary mb-sm uppercase tracking-wider">Somerset Pacific · January 2019 – Present</p>
+                <ul class="font-body text-body-md text-on-surface-variant mb-4 space-y-1 list-disc list-outside pl-4">
+                    <li>Designed and maintain 20+ corporate websites on a weekend/part-time basis (approximately 5 hours per week).</li>
+                    <li>Perform routine updates, troubleshoot issues, and optimize site performance for SEO and mobile compatibility.</li>
+                    <li>Manage DNS, AWS, Webflow, and SSL certificates; coordinate with stakeholders on site changes and branding.</li>
+                </ul>
+                <div class="flex gap-2 flex-wrap">
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">HTML</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">CSS</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">AWS</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">Webflow</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">SEO</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">DNS/SSL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div><!-- end constrained -->
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- PROJECTS -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="py-xl" id="projects">
+
+        <div class="max-w-[1280px] mx-auto px-gutter">
+            <div class="flex items-center gap-md mb-lg reveal">
+                <h2 class="font-heading text-h2 text-primary-fixed whitespace-nowrap">Selected Projects</h2>
+                <div class="h-px bg-outline/20 flex-grow"></div>
+            </div>
+        </div>
+
+        <!-- GeoAI: two separate boxes, 35/65 split -->
+        <!-- ROW HEIGHT: change md:h-screen below to adjust overall height -->
+        <div class="flex flex-col md:flex-row md:h-screen gap-lg px-gutter mb-lg reveal">
+
+            <!-- LEFT: description box — shrinks to fit content, centered against the map -->
+            <div class="md:w-[35%] self-start bg-primary-container border border-slate-accent/20 rounded-lg p-lg flex flex-col">
+                <h3 class="font-heading text-h3 text-primary-fixed mb-sm">GeoAI Urban Tree Canopy Detection</h3>
+                <p class="font-body text-body-md text-on-surface-variant mb-4">
+                    Multi-modal U-Net deep learning pipeline fusing NAIP 60cm imagery (RGB+NIR) with LiDAR-derived nDSM for citywide tree canopy detection across 227 km² of Boise, Idaho. Achieved test IoU of 0.952 and F1 of 0.975. Adding LiDAR height improved IoU by 30% over spectral-only methods.
+                </p>
+                <p class="font-body text-caption text-on-surface-variant/70 mb-4">
+                    Created physics-based training labels (NDVI + nDSM thresholds) validated against 34,499 field-surveyed trees at 90% detection rate. Delineated 261,262 individual tree crowns via marker-controlled watershed segmentation.
+                </p>
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">PyTorch</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">U-Net</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">PDAL/laspy</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">GDAL/Rasterio</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">Three.js</span>
+                </div>
+                <a href="assets/interactive-maps/downtown_unet_3d.html" target="_blank" rel="noopener" class="inline-flex items-center gap-2 self-start border border-slate-accent/30 text-on-surface-variant px-4 py-2 rounded text-label-caps uppercase tracking-wider hover:bg-slate-accent/10 transition-all shadow-[0_0_10px_rgba(91,124,136,0.15)] hover:shadow-[0_0_20px_rgba(91,124,136,0.45)]">
+                    <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+                    Open Full Screen
+                </a>
+            </div>
+
+            <!-- RIGHT: map box — fills full row height -->
+            <div class="md:w-[65%] flex-1 bg-primary-container border border-slate-accent/20 rounded-lg overflow-hidden relative min-h-[400px]">
+                <iframe src="assets/interactive-maps/downtown_unet_3d.html" class="absolute inset-0 w-full h-full border-0" title="GeoAI Urban Tree Canopy Detection — interactive 3D map"></iframe>
+                <div class="absolute top-sm right-sm bg-surface-container/80 backdrop-blur-sm px-2 py-1 rounded font-body text-label-caps text-secondary z-10">GeoAI</div>
+            </div>
+
+        </div><!-- end GeoAI -->
+
+        <!-- Project 2: Prescribed Burn Digital Twin -->
+        <!-- ROW HEIGHT: change md:h-screen below to adjust overall height -->
+        <div class="flex flex-col md:flex-row md:h-screen gap-lg px-gutter mb-lg reveal">
+
+            <!-- LEFT: description box -->
+            <div class="md:w-[35%] self-start bg-primary-container border border-slate-accent/20 rounded-lg p-lg flex flex-col">
+                <h3 class="font-heading text-h3 text-primary-fixed mb-sm">Prescribed Burn Digital Twin</h3>
+                <p class="font-body text-body-md text-on-surface-variant mb-4">
+                    Simulated prescribed burn effects on the 2021 Snake River Complex Fire using FlamMap. Treated scenario eliminated crown fire activity, reduced flame length 55% and fireline intensity 70%. Validated via Sentinel-2 dNBR analysis.
+                </p>
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">FlamMap</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">GEE</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">Blender</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">ArcGIS Pro</span>
+                </div>
+                <a href="assets/interactive-maps/digital-twin-section/index.html" target="_blank" rel="noopener" class="inline-flex items-center gap-2 self-start border border-slate-accent/30 text-on-surface-variant px-4 py-2 rounded text-label-caps uppercase tracking-wider hover:bg-slate-accent/10 transition-all shadow-[0_0_10px_rgba(91,124,136,0.15)] hover:shadow-[0_0_20px_rgba(91,124,136,0.45)]">
+                    <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+                    Open Full Screen
+                </a>
+            </div>
+
+            <!-- RIGHT: map box -->
+            <div class="md:w-[65%] flex-1 bg-primary-container border border-slate-accent/20 rounded-lg overflow-hidden relative min-h-[400px]">
+                <iframe src="assets/interactive-maps/digital-twin-section/index.html" class="absolute inset-0 w-full h-full border-0" title="Prescribed Burn Digital Twin — interactive 3D model"></iframe>
+                <div class="absolute top-sm right-sm bg-surface-container/80 backdrop-blur-sm px-2 py-1 rounded font-body text-label-caps text-secondary z-10">Fire Ecology</div>
+            </div>
+
+        </div><!-- end Prescribed Burn -->
+
+        <!-- Project 3: Predictive Invasive Weed Mapping -->
+        <div class="flex flex-col md:flex-row md:h-screen gap-lg px-gutter mb-lg reveal">
+
+            <!-- LEFT: description box -->
+            <div class="md:w-[35%] self-start bg-primary-container border border-slate-accent/20 rounded-lg p-lg flex flex-col">
+                <h3 class="font-heading text-h3 text-primary-fixed mb-sm">Predictive Invasive Weed Mapping</h3>
+                <p class="font-body text-body-md text-on-surface-variant mb-4">
+                    Random Forest classifier predicting post-harvest invasive weed risk across 57 USFS Ranger Districts in Idaho. Holdout AUC 0.987; 88.5% of sampled post-harvest sites flagged for enhanced weed management.
+                </p>
+                <p class="font-body text-caption text-on-surface-variant/70 mb-4">
+                    Synthesized USFS invasive weed surveys, timber harvest zones, and DEM-derived terrain features. DBSCAN spatial clustering identified high-risk corridors; outputs delivered as ArcGIS Pro raster surfaces for district-level planners.
+                </p>
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">scikit-learn</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">Random Forest</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">DBSCAN</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">ArcGIS Pro</span>
+                </div>
+                <a href="assets/4.predictivemapping/GithubFinalPredictive/portfolio/index.html" target="_blank" rel="noopener" class="inline-flex items-center gap-2 self-start border border-slate-accent/30 text-on-surface-variant px-4 py-2 rounded text-label-caps uppercase tracking-wider hover:bg-slate-accent/10 transition-all shadow-[0_0_10px_rgba(91,124,136,0.15)] hover:shadow-[0_0_20px_rgba(91,124,136,0.45)]">
+                    <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+                    Open Full Screen
+                </a>
+            </div>
+
+            <!-- RIGHT: iframe box -->
+            <div class="md:w-[65%] flex-1 bg-primary-container border border-slate-accent/20 rounded-lg overflow-hidden relative min-h-[400px]">
+                <iframe src="assets/4.predictivemapping/GithubFinalPredictive/portfolio/index.html" class="absolute inset-0 w-full h-full border-0" title="Predictive Invasive Weed Mapping — interactive analysis"></iframe>
+                <div class="absolute top-sm right-sm bg-surface-container/80 backdrop-blur-sm px-2 py-1 rounded font-body text-label-caps text-secondary z-10">Machine Learning</div>
+            </div>
+
+        </div><!-- end Predictive Invasive Weed -->
+
+        <!-- Project 4: Sardinian Farmland Decline -->
+        <div class="flex flex-col md:flex-row md:h-screen gap-lg px-gutter mb-lg reveal">
+
+            <!-- LEFT: description box -->
+            <div class="md:w-[35%] self-start bg-primary-container border border-slate-accent/20 rounded-lg p-lg flex flex-col">
+                <h3 class="font-heading text-h3 text-primary-fixed mb-sm">Sardinian Farmland Decline</h3>
+                <p class="font-body text-body-md text-on-surface-variant mb-4">
+                    Multi-temporal Landsat 5/8/9 NDVI and SAVI analysis across all Sardinian provinces (2007–2024). Documented a 67.9% NDVI increase on registered farm plots — empirical evidence of agricultural abandonment and reforestation.
+                </p>
+                <p class="font-body text-caption text-on-surface-variant/70 mb-4">
+                    Post-classification comparison cross-referenced ISTAT census data with Google Earth Engine reductions. Land-cover transitions visualized via Sankey diagrams; per-province rates ranked to surface the steepest declines.
+                </p>
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">GEE</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">Landsat 5/8/9</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">Plotly</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">ArcGIS Pro</span>
+                    <span class="bg-slate-accent/10 text-on-surface-variant px-2 py-1 rounded text-caption border border-slate-accent/20">ISTAT Data</span>
+                </div>
+                <a href="assets/3.farmland/FarmGithubFinal/index.html" target="_blank" rel="noopener" class="inline-flex items-center gap-2 self-start border border-slate-accent/30 text-on-surface-variant px-4 py-2 rounded text-label-caps uppercase tracking-wider hover:bg-slate-accent/10 transition-all shadow-[0_0_10px_rgba(91,124,136,0.15)] hover:shadow-[0_0_20px_rgba(91,124,136,0.45)]">
+                    <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+                    Open Full Screen
+                </a>
+            </div>
+
+            <!-- RIGHT: iframe box -->
+            <div class="md:w-[65%] flex-1 bg-primary-container border border-slate-accent/20 rounded-lg overflow-hidden relative min-h-[400px]">
+                <iframe src="assets/3.farmland/FarmGithubFinal/index.html" class="absolute inset-0 w-full h-full border-0" title="Sardinian Farmland Decline — interactive analysis"></iframe>
+                <div class="absolute top-sm right-sm bg-surface-container/80 backdrop-blur-sm px-2 py-1 rounded font-body text-label-caps text-secondary z-10">Remote Sensing</div>
+            </div>
+
+        </div><!-- end Sardinian Farmland -->
+    </section>
+
+<div class="max-w-[1280px] mx-auto px-gutter">
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- EDUCATION & SKILLS -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="py-xl grid grid-cols-1 md:grid-cols-12 gap-lg">
+
+        <!-- Education -->
+        <div class="md:col-span-7" id="education">
+            <div class="flex items-center gap-md mb-lg reveal">
+                <h2 class="font-heading text-h2 text-primary-fixed whitespace-nowrap">Education</h2>
+                <div class="h-px bg-outline/20 flex-grow"></div>
+            </div>
+            <div class="flex flex-col gap-md stagger">
+                <div class="bg-primary-container border border-slate-accent/20 rounded-lg p-md relative reveal">
+                    <h3 class="font-heading text-h3 text-secondary mb-xs">MSc, Geographic Information Systems</h3>
+                    <p class="font-body text-label-caps text-tertiary uppercase tracking-wider mb-sm">Vrije Universiteit Amsterdam · 2024 – Present (thesis stage)</p>
+                    <p class="font-body text-body-md text-on-surface-variant">
+                        Coursework complete. Thesis: multi-modal deep learning for urban tree canopy detection. Relevant coursework includes GIS, Remote Sensing, GeoAI, Database Management, and Geospatial Analysis.
+                    </p>
+                </div>
+                <div class="bg-primary-container border border-slate-accent/20 rounded-lg p-md relative reveal">
+                    <h3 class="font-heading text-h3 text-secondary mb-xs">BA, Conservation Biology</h3>
+                    <p class="font-body text-label-caps text-tertiary uppercase tracking-wider mb-sm">The College of Idaho · 2014</p>
+                    <p class="font-body text-body-md text-on-surface-variant">
+                        Relevant coursework in Geographic Information Systems, Statistics, and Botanical Surveying.
+                    </p>
+                </div>
+                <div class="bg-primary-container border border-slate-accent/20 rounded-lg p-md relative reveal">
+                    <h3 class="font-heading text-h3 text-secondary mb-xs">Aerial Crewman Training</h3>
+                    <p class="font-body text-label-caps text-tertiary uppercase tracking-wider mb-sm">USDA Forest Service · Certification</p>
+                    <p class="font-body text-body-md text-on-surface-variant">
+                        Certified for aerial detection surveying operations.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Stack -->
+        <div class="md:col-span-5" id="skills">
+            <div class="flex items-center gap-md mb-lg reveal">
+                <h2 class="font-heading text-h2 text-primary-fixed whitespace-nowrap">Technical Stack</h2>
+                <div class="h-px bg-outline/20 flex-grow"></div>
+            </div>
+            <div class="bg-surface-container border border-slate-accent/10 rounded-lg p-md reveal">
+
+                <div class="mb-md">
+                    <h4 class="font-body text-label-caps text-outline uppercase mb-2 tracking-widest">GIS &amp; Remote Sensing</h4>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">ArcGIS Pro</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">ArcGIS Enterprise</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">QGIS</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">Google Earth Engine</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">FlamMap</span>
+                    </div>
+                </div>
+
+                <div class="mb-md">
+                    <h4 class="font-body text-label-caps text-outline uppercase mb-2 tracking-widest">GeoAI &amp; Machine Learning</h4>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">PyTorch</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">U-Net</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">DeepLabV3+</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">scikit-learn</span>
+                    </div>
+                </div>
+
+                <div class="mb-md">
+                    <h4 class="font-body text-label-caps text-outline uppercase mb-2 tracking-widest">Programming</h4>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">Python</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">R</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">SQL</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">JavaScript</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">Bash</span>
+                    </div>
+                </div>
+
+                <div class="mb-md">
+                    <h4 class="font-body text-label-caps text-outline uppercase mb-2 tracking-widest">Databases</h4>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">PostgreSQL/PostGIS</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">Spatial Data Modeling</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">FGDC/ISO Metadata</span>
+                    </div>
+                </div>
+
+                <div class="mb-md">
+                    <h4 class="font-body text-label-caps text-outline uppercase mb-2 tracking-widest">Remote Sensing Data</h4>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">Sentinel-2</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">Landsat</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">NAIP</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">LiDAR/nDSM</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-body text-label-caps text-outline uppercase mb-2 tracking-widest">Infrastructure</h4>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">AWS</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">Docker</span>
+                        <span class="bg-slate-accent/10 text-primary-fixed px-3 py-1 rounded text-caption">DNS/SSL</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div><!-- end constrained -->
+
+</main>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FOOTER / CONTACT -->
+<!-- ═══════════════════════════════════════════ -->
+<footer class="bg-primary-container w-full py-16 px-6 md:px-8 border-t border-slate-accent/10 mt-xl" id="contact">
+    <div class="max-w-[1280px] mx-auto">
+        <div class="flex items-center gap-md mb-lg">
+            <h2 class="font-heading text-h2 text-primary-fixed whitespace-nowrap">Get in Touch</h2>
+            <div class="h-px bg-outline/20 flex-grow"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div>
+                <h4 class="font-body text-label-caps text-outline uppercase tracking-widest mb-3">Email</h4>
+                <a href="mailto:seanvdahlman@gmail.com" class="text-secondary hover:text-terra transition-colors font-body text-body-md">
+                    seanvdahlman@gmail.com
+                </a>
+            </div>
+            <div>
+                <h4 class="font-body text-label-caps text-outline uppercase tracking-widest mb-3">Phone</h4>
+                <a href="tel:+12087207556" class="text-secondary hover:text-terra transition-colors font-body text-body-md">
+                    +1 208-720-7556
+                </a>
+            </div>
+            <div>
+                <h4 class="font-body text-label-caps text-outline uppercase tracking-widest mb-3">Availability</h4>
+                <p class="text-on-surface-variant font-body text-body-md">
+                    US Citizen — Available to relocate
+                </p>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-outline/10">
+            <div class="text-lg font-semibold text-primary-fixed font-heading tracking-wide">
+                Sean Dahlman
+            </div>
+            <div class="flex gap-6">
+                <a class="text-on-surface-variant/50 hover:text-terra transition-colors font-heading text-sm tracking-wide underline-offset-4 hover:underline" href="https://github.com/seanvdahlman" target="_blank" rel="noopener">GitHub</a>
+                <a class="text-on-surface-variant/50 hover:text-terra transition-colors font-heading text-sm tracking-wide underline-offset-4 hover:underline" href="https://linkedin.com/in/seandahlman" target="_blank" rel="noopener">LinkedIn</a>
+                <a class="text-on-surface-variant/50 hover:text-terra transition-colors font-heading text-sm tracking-wide underline-offset-4 hover:underline" href="mailto:seanvdahlman@gmail.com">Email</a>
+            </div>
+            <div class="font-body text-caption text-on-surface-variant/30">
+                © 2025 Sean Dahlman · WGS 84
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SCRIPTS -->
+<!-- ═══════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.3/p5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.topology.min.js"></script>
+<script>
+  // Two staggered layers so there's always one mid-pattern while the other resets.
+  // Layer B uses mix-blend-mode:screen (set in HTML) so its dark background
+  // disappears and only the lines composite over layer A.
+  function runLayer(el, bgColor, startDelay) {
+    let effect;
+
+    function init() {
+      effect = VANTA.TOPOLOGY({
+        el,
+        mouseControls: startDelay === 0,
+        touchControls: startDelay === 0,
+        gyroControls: false,
+        minHeight: 200,
+        minWidth: 200,
+        scale: 3.00,
+        scaleMobile: 2.00,
+        color: 0x5B8C6A,
+        backgroundColor: bgColor,
+      });
+    }
+
+    setTimeout(() => {
+      init();
+      el.style.transition = 'opacity 3s ease-out';
+      el.style.opacity = '1';
+
+      setInterval(() => {
+        el.style.transition = 'opacity 3s ease-in';
+        el.style.opacity = '0';
+        setTimeout(() => {
+          effect.destroy();
+          init();
+          el.style.transition = 'opacity 3s ease-out';
+          el.style.opacity = '1';
+        }, 3000);
+      }, 22000);
+    }, startDelay);
+  }
+
+  // A: provides the base background color, starts immediately
+  // B: pure black bg (screens away to nothing), starts 14s later
+  runLayer(document.getElementById('topo-a'), 0x00161d, 0);
+  runLayer(document.getElementById('topo-b'), 0x000000, 14000);
+</script>
+<script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+    });
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+    }
+
+    // Shrink header on scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 60) {
+            header.classList.add('shadow-lg');
+        } else {
+            header.classList.remove('shadow-lg');
+        }
+    });
+</script>
+</body>
+</html>

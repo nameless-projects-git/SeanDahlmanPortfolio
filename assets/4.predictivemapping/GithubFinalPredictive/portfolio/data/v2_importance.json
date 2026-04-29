@@ -1,0 +1,107 @@
+[
+  {
+    "feature": "elevation",
+    "label": "Elevation",
+    "category": "terrain",
+    "importance": 0.0885438483221265,
+    "std": 0.0009463792277076
+  },
+  {
+    "feature": "dist_to_road_m",
+    "label": "Distance to road",
+    "category": "access",
+    "importance": 0.0643654630489898,
+    "std": 0.0004530842450493
+  },
+  {
+    "feature": "years_since_harvest",
+    "label": "Years since harvest",
+    "category": "disturbance",
+    "importance": 0.0488291891721651,
+    "std": 0.000288033343059
+  },
+  {
+    "feature": "dist_to_harvest_m",
+    "label": "Distance to harvest",
+    "category": "disturbance",
+    "importance": 0.0391194116813379,
+    "std": 0.000912060273028
+  },
+  {
+    "feature": "owner_USFS",
+    "label": "USFS lands",
+    "category": "owner",
+    "importance": 0.0286033730689889,
+    "std": 0.000472901296137
+  },
+  {
+    "feature": "owner_Other",
+    "label": "Other lands",
+    "category": "owner",
+    "importance": 0.0175739728831709,
+    "std": 0.0007843982996832
+  },
+  {
+    "feature": "genus_Centaurea",
+    "label": "Centaurea",
+    "category": "genus",
+    "importance": 0.0107963403303781,
+    "std": 0.0001843441806108
+  },
+  {
+    "feature": "genus_Euphorbia",
+    "label": "Euphorbia",
+    "category": "genus",
+    "importance": 0.007275246838732,
+    "std": 0.0002398555377183
+  },
+  {
+    "feature": "genus_Hypericum",
+    "label": "Hypericum",
+    "category": "genus",
+    "importance": 0.0040470528951388,
+    "std": 0.0001660573683317
+  },
+  {
+    "feature": "genus_Other",
+    "label": "Other",
+    "category": "genus",
+    "importance": 0.0037321071445443,
+    "std": 0.0001719269207937
+  },
+  {
+    "feature": "genus_Chondrilla",
+    "label": "Chondrilla",
+    "category": "genus",
+    "importance": 0.003410862478938,
+    "std": 0.0001604678733648
+  },
+  {
+    "feature": "genus_Linaria",
+    "label": "Linaria",
+    "category": "genus",
+    "importance": 0.0030644221532841,
+    "std": 0.0002837309892018
+  },
+  {
+    "feature": "genus_Cirsium",
+    "label": "Cirsium",
+    "category": "genus",
+    "importance": 0.0027746720627372,
+    "std": 0.0001348762301331
+  },
+  {
+    "feature": "genus_Hieracium",
+    "label": "Hieracium",
+    "category": "genus",
+    "importance": 0.0026896367100767,
+    "std": 0.0001465090260253
+  },
+  {
+    "feature": "owner_PRIV",
+    "label": "PRIV lands",
+    "category": "owner",
+    "importance": 0.0012849786624254,
+    "std": 0.0002724963343001
+  }
+]

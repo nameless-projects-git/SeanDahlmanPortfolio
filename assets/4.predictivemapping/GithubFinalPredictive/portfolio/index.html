@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Predictive Mapping for Invasive Weed Management — Sean Dahlman</title>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-text">
+        <p class="kicker">Idaho · 1934–2024 · 53,190 surveyed points</p>
+        <h1>Predictive Mapping<br><span>for Invasive Weed Management</span></h1>
+        <p class="lede">Which Forest Service ranger districts need to budget for enhanced post-harvest weed control — and which species should they prepare for?</p>
+        <p class="byline">Sean Dahlman · GIS portfolio · <a href="https://github.com/" target="_blank" rel="noopener">source on GitHub</a></p>
+      </div>
+      <aside class="district-panel district-panel--hero" id="district-panel">
+        <p class="placeholder">Click any district →</p>
+      </aside>
+      <p class="scroll-hint">scroll ↓ &nbsp;·&nbsp; +/− or double-click to zoom — scroll passes through</p>
+    </div>
+    <div class="hero-right">
+      <div id="map"></div>
+    </div>
+  </div>
+</header>
+
+<section class="story story--full" id="data">
+  <div class="story-text full">
+    <p class="kicker">01 · The data</p>
+    <h2>Three federal datasets, one question</h2>
+    <p>Every Forest Service timber harvest in Idaho since 1900, every invasive weed survey since 1934, and every ranger district boundary in the state — joined at the polygon level and sampled to a clean point dataset.</p>
+    <ul class="stats" id="data-stats"></ul>
+    <p class="caption">Click a district in the hero map to see its enhanced-management rate, top genera, and harvest acreage.</p>
+  </div>
+</section>
+
+<section class="story" id="model">
+  <div class="story-text full">
+    <p class="kicker">02 · The model</p>
+    <h2>Disturbance ecology &gt; district identity</h2>
+    <p>A Random Forest classifier predicts whether a location requires enhanced post-harvest weed management. Trained on 63,503 Idaho survey records and validated by holding out entire ranger districts (GroupKFold spatial cross-validation, so the model has to generalize to a district it has never seen).</p>
+
+    <div class="auc-headline">
+      <span class="auc-num" id="auc-headline">AUC = 0.70 ± 0.07</span>
+      <span class="auc-label">5-fold spatial CV, district held out</span>
+    </div>
+
+    <p>Features include genus, land ownership, elevation, distance to nearest harvest, years since that harvest (computed from <code>DATE_COMPL</code> × <code>DATE_COLLE</code>), and distance to the nearest TIGER primary/secondary road.</p>
+
+    <h3 style="margin-top: 2rem;">What predicts invasion</h3>
+    <p>Permutation importance — each feature is shuffled and the AUC drop measured directly. The conservative, distribution-free read on what the model actually uses.</p>
+    <div id="importance-chart"></div>
+    <p class="caption">Disturbance proximity (years since harvest, distance to harvest, distance to road) and terrain dominate. Species composition matters but is a secondary signal once disturbance ecology is accounted for.</p>
+
+    <div class="callout">
+      <h3>Why this is a defensible number</h3>
+      <p>Spatial cross-validation forces the model to generalize across districts, not memorize them. The fold-to-fold variation (std 0.065) reflects real heterogeneity between Idaho's ranger districts, not statistical noise. AUC = 0.70 means the model meaningfully outperforms random (0.50) on locations it has never seen — which is the entire point of a "predictive" map.</p>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="specialist">
+  <div class="story-text full">
+    <p class="kicker">03 · Specialist or enhanced?</p>
+    <h2>No invasive in Idaho is a pure harvest specialist</h2>
+    <p>A common framing claims certain genera (<em>Linaria</em>, <em>Chondrilla</em>) only appear after timber disturbance. Checked at the species level statewide:</p>
+    <img src="figures/specialist_vs_enhanced.png" alt="Specialist vs harvest-enhanced species breakdown" class="figure">
+    <p>Of the 116 invasive species in the dataset, <strong>74 are harvest-enhanced</strong> (present both in harvest zones and elsewhere on the landscape), <strong>42 are baseline only</strong>, and <strong>0 are pure harvest specialists</strong>. The original "specialist" claim only holds at the district × species pair level (14 such pairs out of 1,073).</p>
+    <p>The operational reframing: post-harvest treatment isn't fighting unique invaders. It's fighting the same 74 species already on the landscape, with disturbance amplifying their establishment. Pre-harvest planning still matters — but for <em>intensity</em>, not novelty.</p>
+  </div>
+</section>
+
+<section class="story" id="elevation">
+  <div class="story-text full">
+    <p class="kicker">04 · Where they concentrate</p>
+    <h2>Mid-elevation hotspot, 1,200–2,000 m</h2>
+    <img src="figures/elevation_ridge_by_genus.png" alt="Elevation distribution by genus" class="figure">
+    <p>Mid-elevation zones carry the heaviest invasion load — the same band where timber operations are economically viable. <em>Hieracium</em> and <em>Cynoglossum</em> push higher; <em>Centaurea</em> and <em>Euphorbia</em> spread more evenly.</p>
+  </div>
+</section>
+
+<section class="story" id="limits">
+  <div class="story-text full">
+    <p class="kicker">05 · Limitations</p>
+    <h2>Honest about what this model can't claim</h2>
+    <ol class="limits">
+      <li><strong>TIGER primary/secondary roads only.</strong> Forest roads — the actual access points for harvest crews — aren't in the public TIGER file. Real distance-to-road would use the FSGeodata Forest Service Roads layer.</li>
+      <li><strong>Survey effort still skews counts.</strong> Districts surveyed more often have more positive points. Weighting by survey effort per district per year would help.</li>
+      <li><strong>Constructed target.</strong> <code>enhanced_mgmt</code> is defined as <code>cover_pct ≥ 1</code> OR (recent harvest within 500 m AND ≤ 7 years). Defensible but not ground truth.</li>
+      <li><strong>Anachronistic roads.</strong> TIGER roads are from 2024; surveys go back to 1934. The road network from earlier eras is approximated by today's network.</li>
+      <li><strong>Genus truncation.</strong> 91.4% genus match rate; two genera (<code>Cynoglossu</code>, <code>Leucanthem</code>) show up as 10-character DBF-truncated names.</li>
+    </ol>
+    <p class="caption">Data: USDA FSGeodata Clearinghouse, USGS National Map. Code: vanilla HTML + MapLibre GL JS + D3. No backend, no build step.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Sean Dahlman · 2025 · <a href="https://github.com/" target="_blank" rel="noopener">github</a> · <a href="../FINDINGS.md">findings notes</a></p>
+</footer>
+
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/d3@7"></script>
+<script src="js/map.js" type="module"></script>
+<script src="js/charts.js" type="module"></script>
+<script src="js/scroll.js" type="module"></script>
+
+</body>
+</html>

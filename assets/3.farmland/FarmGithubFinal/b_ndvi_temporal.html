@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<title>B · NDVI Temporal Change · Sardinia Terra</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "surface-tint": "#546251",
+          "outline-variant": "#c4c8c0",
+          "tertiary": "#615d54",
+          "tertiary-container": "#7a766c",
+          "on-tertiary-container": "#ffffff",
+          "on-background": "#1c1c1a",
+          "surface-container-highest": "#e5e2de",
+          "tertiary-fixed": "#e8e2d6",
+          "on-tertiary-fixed": "#1e1c14",
+          "on-tertiary-fixed-variant": "#4a473e",
+          "on-primary": "#ffffff",
+          "surface": "#fcf9f5",
+          "on-surface": "#1c1c1a",
+          "on-primary-container": "#ffffff",
+          "on-primary-fixed": "#121f11",
+          "on-primary-fixed-variant": "#3c4a3b",
+          "primary-container": "#6b7a68",
+          "on-surface-variant": "#444842",
+          "secondary-fixed-dim": "#ffb5a1",
+          "inverse-on-surface": "#f3f0ec",
+          "inverse-surface": "#31302e",
+          "primary-fixed": "#d7e7d2",
+          "primary-fixed-dim": "#bbcbb6",
+          "on-tertiary": "#ffffff",
+          "secondary-container": "#fcaa94",
+          "tertiary-fixed-dim": "#cbc6ba",
+          "on-secondary-fixed": "#390c02",
+          "on-secondary-fixed-variant": "#703626",
+          "background": "#fcf9f5",
+          "secondary-fixed": "#ffdbd1",
+          "on-secondary": "#ffffff",
+          "secondary": "#8d4d3b",
+          "surface-container-high": "#eae8e4",
+          "surface-container-lowest": "#ffffff",
+          "on-secondary-container": "#783c2c",
+          "surface-bright": "#fcf9f5",
+          "inverse-primary": "#bbcbb6",
+          "primary": "#536150",
+          "surface-container": "#f0ede9",
+          "surface-container-low": "#f6f3ef",
+          "outline": "#747871",
+          "surface-dim": "#dcdad6",
+          "surface-variant": "#e5e2de",
+        },
+        borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", "2xl": "1rem", full: "9999px" },
+        spacing: { xs: "4px", sm: "12px", base: "8px", md: "24px", lg: "48px", xl: "80px", gutter: "24px", margin: "32px" },
+        fontFamily: {
+          "headline-xl": ["Inter"], "headline-lg": ["Inter"], "headline-md": ["Inter"],
+          "body-lg": ["Inter"], "body-md": ["Inter"],
+          "label-md": ["Inter"], "label-sm": ["Inter"],
+        },
+        fontSize: {
+          "headline-xl": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+          "headline-lg": ["32px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "700" }],
+          "headline-md": ["24px", { lineHeight: "1.3", letterSpacing: "-0.01em", fontWeight: "600" }],
+          "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+          "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+          "label-md": ["14px", { lineHeight: "1.4", letterSpacing: "0.02em", fontWeight: "600" }],
+          "label-sm": ["12px", { lineHeight: "1.4", letterSpacing: "0.05em", fontWeight: "500" }],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal; font-style: normal; font-size: 24px; line-height: 1;
+    letter-spacing: normal; text-transform: none; display: inline-block;
+    white-space: nowrap; word-wrap: normal; direction: ltr;
+    -webkit-font-smoothing: antialiased;
+  }
+  body { font-variant-numeric: tabular-nums; }
+
+  .year-btn {
+    padding: 8px 16px; border-radius: 8px;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    background: transparent; color: #444842;
+    transition: all 0.15s ease;
+  }
+  .year-btn:hover { background: rgba(83,97,80,0.06); color: #536150; }
+  .year-btn.active {
+    background: #536150; color: #ffffff;
+    box-shadow: 0 4px 14px -4px rgba(83,97,80,0.4);
+  }
+
+  .pill {
+    background: #f6f3ef; border-radius: 999px;
+    padding: 6px 14px; font-size: 13px; color: #444842;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .pill b { color: #1c1c1a; font-weight: 600; }
+
+  svg.chart { width: 100%; height: 100%; flex: 1; min-height: 0; display: block; }
+  .chart text { fill: #747871; font-family: Inter; font-size: 11px; }
+  .chart .axis path, .chart .axis line { stroke: #c4c8c0; }
+  .chart .grid-line { stroke: #e5e2de; stroke-dasharray: 2,3; }
+
+  #miniMap { flex: 1; min-height: 0; border-radius: 12px; overflow: hidden; border: 1px solid #e5e2de; }
+  .leaflet-control-attribution {
+    background: rgba(252,249,245,0.95) !important; color: #444842 !important;
+    font-family: Inter; font-size: 10px;
+  }
+  .leaflet-control-attribution a { color: #536150 !important; }
+  .leaflet-bar a {
+    background: #ffffff !important; color: #1c1c1a !important; border-color: #e5e2de !important;
+  }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body-md flex h-screen overflow-hidden antialiased">
+
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low h-screen w-64 left-0 top-0 fixed flex flex-col p-6 space-y-1 z-40">
+  <div class="mb-10 px-4">
+    <div class="text-primary font-bold text-xs uppercase tracking-[0.1em] leading-tight">Sardinia Land Use Change</div>
+    <div class="text-[10px] text-outline uppercase tracking-widest mt-1">Remote Sensing 2007–2024</div>
+  </div>
+
+  <div class="flex-1 space-y-1">
+    <a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container/70 rounded-lg transition-colors flex items-center gap-3 font-bold text-xs uppercase tracking-[0.1em]" href="index.html">
+      <span class="material-symbols-outlined">home</span>
+      Home
+    </a>
+    <a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container/70 rounded-lg transition-colors flex items-center gap-3 font-bold text-xs uppercase tracking-[0.1em]" href="a_classification.html">
+      <span class="material-symbols-outlined">map</span>
+      Classification
+    </a>
+    <a class="bg-primary/10 text-primary rounded-lg px-4 py-3 flex items-center gap-3 font-bold text-xs uppercase tracking-[0.1em]" href="b_ndvi_temporal.html">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+      NDVI
+    </a>
+    <a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container/70 rounded-lg transition-colors flex items-center gap-3 font-bold text-xs uppercase tracking-[0.1em]" href="c_sankey_transitions.html">
+      <span class="material-symbols-outlined">sync_alt</span>
+      Sankey
+    </a>
+  </div>
+
+  <div class="mt-auto pt-6 border-t border-surface-variant/50 space-y-1">
+    <a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container/70 rounded-lg transition-colors flex items-center gap-3 font-bold text-xs uppercase tracking-[0.1em]" href="GEE_export_notebook.ipynb">
+      <span class="material-symbols-outlined">code_blocks</span>
+      GEE Notebook
+    </a>
+    <a class="text-on-surface-variant px-4 py-3 hover:bg-surface-container/70 rounded-lg transition-colors flex items-center gap-3 font-bold text-xs uppercase tracking-[0.1em]" href="../FinalReport_TAA4_Dahlman.pdf">
+      <span class="material-symbols-outlined">description</span>
+      Final Report
+    </a>
+  </div>
+</nav>
+
+<!-- Main wrapper -->
+<div class="flex-1 ml-64 flex flex-col h-screen relative">
+
+  <!-- Top bar -->
+  <header class="bg-surface-container-lowest sticky top-0 z-50 shadow-[0_4px_20px_-2px_rgba(107,122,104,0.06)] flex justify-between items-center px-8 h-16 w-full">
+    <div class="text-base font-black tracking-tighter text-primary uppercase">NDVI Temporal Change</div>
+    <div class="flex items-center gap-4">
+      <div class="hidden md:flex items-center gap-2 bg-surface-container px-3 py-1.5 rounded-full">
+        <span class="material-symbols-outlined text-[16px] text-outline">satellite_alt</span>
+        <span class="font-label-md text-label-md text-on-surface" id="topSensor">Landsat 7 + 8</span>
+      </div>
+      <a href="index.html" class="text-on-surface-variant hover:text-primary p-2 rounded-full hover:bg-surface-container-low transition-colors">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Canvas -->
+  <main class="flex-1 overflow-y-auto bg-background p-margin">
+    <div class="max-w-[1600px] mx-auto space-y-margin">
+
+      <!-- Page Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+        <div>
+          <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Sardegna · ~218k zones</span>
+          <h1 class="font-headline-xl text-headline-xl text-on-surface mt-2">NDVI temporal change</h1>
+          <p class="font-body-lg text-body-lg text-on-surface-variant mt-2 max-w-2xl">
+            Per-zone NDVI summary across 2007 → 2024. Year toggle drives the raster map and all three
+            distribution charts simultaneously.
+          </p>
+        </div>
+        <!-- Year selector -->
+        <div class="bg-surface-container-lowest rounded-2xl p-1.5 flex items-center gap-1 shadow-[0_8px_30px_-6px_rgba(83,97,80,0.12)]">
+          <button class="year-btn active" data-year="2007">2007</button>
+          <button class="year-btn" data-year="2014">2014</button>
+          <button class="year-btn" data-year="2020">2020</button>
+          <button class="year-btn" data-year="2024">2024</button>
+        </div>
+      </div>
+
+      <!-- Year context strip -->
+      <div class="flex flex-wrap gap-sm" id="statsRow"></div>
+
+      <!-- Charts grid: 3 stacked cards on the left, full-height map on the right -->
+      <div class="grid grid-cols-12 gap-gutter items-stretch">
+
+        <!-- Left column: 3 stacked cards -->
+        <div class="col-span-12 lg:col-span-5 flex flex-col gap-gutter">
+
+          <!-- Class line chart -->
+          <div class="bg-surface-container-lowest p-lg rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.03)] flex flex-col h-[480px]">
+            <div class="flex justify-between items-start mb-md">
+              <div>
+                <h2 class="font-headline-md text-headline-md text-on-surface">Class area over time</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-1">Classified area (km²) per land use class, all four years.</p>
+              </div>
+            </div>
+            <svg id="lineChart" class="chart"></svg>
+          </div>
+
+          <!-- Histogram -->
+          <div class="bg-surface-container-lowest p-lg rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.03)] flex flex-col h-[440px]">
+            <div class="flex justify-between items-start mb-md">
+              <div>
+                <h2 class="font-headline-md text-headline-md text-on-surface">NDVI distribution · <span id="histYear">2007</span></h2>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-1">Histogram of mean NDVI per zone. Higher NDVI = greener vegetation.</p>
+              </div>
+            </div>
+            <svg id="histChart" class="chart"></svg>
+          </div>
+
+          <!-- Box / percentile -->
+          <div class="bg-surface-container-lowest p-lg rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.03)] flex flex-col h-[440px]">
+            <div class="flex justify-between items-start mb-md">
+              <div>
+                <h2 class="font-headline-md text-headline-md text-on-surface">Percentile bands by year</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-1">P5–P95 range and median per year. Shows how the central tendency shifts over time.</p>
+              </div>
+            </div>
+            <svg id="boxChart" class="chart"></svg>
+          </div>
+        </div>
+
+        <!-- Right column: NDVI raster mini-map (full height of left stack) -->
+        <div class="col-span-12 lg:col-span-7 bg-surface-container-lowest p-lg rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.03)] flex flex-col">
+          <div class="flex justify-between items-start mb-md">
+            <div>
+              <h2 class="font-headline-md text-headline-md text-on-surface">NDVI raster · <span id="mapYear">2007</span></h2>
+              <p class="font-body-md text-body-md text-on-surface-variant mt-1">Median NDVI Jun–Aug composite.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 mb-sm">
+            <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">low</span>
+            <span class="block flex-1 h-3 rounded-full" style="background:linear-gradient(to right,#660016,#b37f7e,#fffee6,#80a08f,#004238)"></span>
+            <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">high</span>
+          </div>
+          <div id="miniMap"></div>
+        </div>
+      </div>
+
+      <div class="h-16"></div>
+    </div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://unpkg.com/georaster@1.6.0/dist/georaster.browser.bundle.min.js"></script>
+<script src="https://unpkg.com/georaster-layer-for-leaflet@3.10.0/dist/georaster-layer-for-leaflet.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+const CLASSES = [
+  { value: 1, short: 'Agriculture',     color: '#d9bf0d' },
+  { value: 2, short: 'Forest/Orchard',  color: '#3abf66' },
+  { value: 3, short: 'Urban',           color: '#c44296' },
+  { value: 4, short: 'Bare/Fallow',     color: '#d97f00' },
+  { value: 5, short: 'Water',           color: '#00b6f1' },
+];
+const colorByName = {
+  'Agriculture': '#d9bf0d', 'Forest/Orchard': '#3abf66', 'Urban': '#c44296',
+  'Bare/Fallow': '#d97f00', 'Water': '#00b6f1',
+};
+const SENSOR_BY_YEAR = { '2007': 'Landsat 7', '2014': 'Landsat 8', '2020': 'Landsat 8', '2024': 'Landsat 8' };
+
+let analysis, geo;
+let currentYear = '2007';
+
+Promise.all([
+  fetch('data/analysis.json').then(r => r.json()),
+  fetch('data/training_polygons.geojson').then(r => r.json()),
+]).then(([a, g]) => {
+  analysis = a; geo = g;
+  setupYearButtons();
+  drawAll();
+  drawBox();
+  drawMiniMap();
+  window.addEventListener('resize', () => { drawHist(); drawBox(); drawLine(); });
+});
+
+function setupYearButtons() {
+  document.querySelectorAll('.year-btn').forEach(b => {
+    b.onclick = () => {
+      currentYear = b.dataset.year;
+      document.querySelectorAll('.year-btn').forEach(x => x.classList.toggle('active', x === b));
+      drawAll();
+    };
+  });
+}
+
+function drawAll() {
+  const s = analysis.zonal_ndvi_summary[currentYear];
+  document.getElementById('histYear').textContent = currentYear;
+  document.getElementById('topSensor').textContent = SENSOR_BY_YEAR[currentYear];
+  const ch = analysis.ndvi_change_2007_2024;
+  document.getElementById('statsRow').innerHTML = `
+    <span class="pill"><span style="color:#747871">Year</span><b>${currentYear}</b></span>
+    <span class="pill"><span style="color:#747871">Sensor</span><b>${SENSOR_BY_YEAR[currentYear]}</b></span>
+    <span class="pill"><span style="color:#747871">Zones</span><b>${s.count.toLocaleString()}</b></span>
+    <span class="pill"><span style="color:#747871">Mean NDVI</span><b>${s.mean.toFixed(3)}</b></span>
+    <span class="pill"><span style="color:#747871">Median</span><b>${s.median.toFixed(3)}</b></span>
+    <span class="pill"><span style="color:#747871">P25–P75</span><b>${s.p25.toFixed(2)}–${s.p75.toFixed(2)}</b></span>
+    ${ch ? `<span class="pill"><span style="color:#747871">2007→2024</span><b style="color:#536150">↑${ch.increase_pct}%</b><b style="color:#747871">→${ch.nochange_pct}%</b><b style="color:#8d4d3b">↓${ch.decrease_pct}%</b></span>` : ''}
+  `;
+  drawHist();
+  drawLine();
+  setMiniMapYear(currentYear);
+}
+
+function chartSize(svgEl, m = { t: 18, r: 16, b: 30, l: 44 }) {
+  const r = svgEl.getBoundingClientRect();
+  const w = Math.max(220, r.width);
+  const h = Math.max(180, r.height);
+  return { w, h, iw: w - m.l - m.r, ih: h - m.t - m.b, m };
+}
+
+function drawHist() {
+  const svg = d3.select('#histChart');
+  svg.selectAll('*').remove();
+  const node = svg.node();
+  const { w, h, iw, ih, m } = chartSize(node, { t: 18, r: 16, b: 48, l: 36 });
+  svg.attr('viewBox', `0 0 ${w} ${h}`);
+  const s = analysis.zonal_ndvi_summary[currentYear];
+  const edges = s.hist_edges, counts = s.hist_counts;
+  const data = edges.slice(0, -1).map((lo, i) => ({ lo, hi: edges[i+1], n: counts[i] }));
+
+  const x = d3.scaleLinear().domain([edges[0], edges[edges.length-1]]).range([m.l, m.l + iw]);
+  const y = d3.scaleLinear().domain([0, d3.max(data, d => d.n)]).nice().range([m.t + ih, m.t]);
+
+  svg.selectAll('line.grid-line')
+    .data(y.ticks(5)).enter().append('line').attr('class','grid-line')
+    .attr('x1', m.l).attr('x2', m.l + iw).attr('y1', d => y(d)).attr('y2', d => y(d));
+
+  svg.selectAll('rect').data(data).enter().append('rect')
+    .attr('x', d => x(d.lo) + 1)
+    .attr('width', d => Math.max(1, x(d.hi) - x(d.lo) - 2))
+    .attr('y', d => y(d.n))
+    .attr('height', d => y(0) - y(d.n))
+    .attr('rx', 1.5)
+    .attr('fill', '#536150')
+    .attr('opacity', 0.85);
+
+  const xa = d3.axisBottom(x).ticks(8).tickFormat(d3.format('.1f'));
+  const ya = d3.axisLeft(y).ticks(5).tickFormat(d3.format('~s'));
+  svg.append('g').attr('class','axis').attr('transform', `translate(0,${m.t + ih})`).call(xa);
+  svg.append('g').attr('class','axis').attr('transform', `translate(${m.l},0)`).call(ya);
+
+  svg.append('text').attr('x', m.l + iw / 2).attr('y', h - 8).attr('text-anchor','middle').text('Mean NDVI');
+  svg.append('text').attr('x', -((m.t + ih) / 2)).attr('y', 8).attr('transform','rotate(-90)').attr('text-anchor','middle').text('Zone count');
+
+  svg.append('line')
+    .attr('x1', x(s.mean)).attr('x2', x(s.mean))
+    .attr('y1', m.t).attr('y2', m.t + ih)
+    .attr('stroke', '#e53935').attr('stroke-width', 1.8).attr('stroke-dasharray', '4,3');
+  svg.append('text').attr('x', x(s.mean) + 14).attr('y', m.t + 12).attr('fill', '#e53935').attr('font-weight', 600)
+    .text(`mean ${s.mean.toFixed(3)}`);
+}
+
+function drawBox() {
+  const svg = d3.select('#boxChart');
+  svg.selectAll('*').remove();
+  const node = svg.node();
+  const { w, h, iw, ih, m } = chartSize(node, { t: 18, r: 16, b: 30, l: 50 });
+  svg.attr('viewBox', `0 0 ${w} ${h}`);
+  const years = ['2007','2014','2020','2024'];
+  const x = d3.scaleBand().domain(years).range([m.l, m.l + iw]).padding(0.45);
+  const y = d3.scaleLinear().domain([-0.05, 0.7]).range([m.t + ih, m.t]);
+
+  svg.selectAll('line.grid-line')
+    .data(y.ticks(6)).enter().append('line').attr('class','grid-line')
+    .attr('x1', m.l).attr('x2', m.l + iw).attr('y1', d => y(d)).attr('y2', d => y(d));
+
+  for (const yr of years) {
+    const s = analysis.zonal_ndvi_summary[yr];
+    const cx = x(yr) + x.bandwidth() / 2;
+    const bw = x.bandwidth();
+    svg.append('line').attr('x1', cx).attr('x2', cx).attr('y1', y(s.p05)).attr('y2', y(s.p95))
+      .attr('stroke', '#747871').attr('stroke-width', 1);
+    svg.append('rect')
+      .attr('x', x(yr)).attr('y', y(s.p75))
+      .attr('width', bw).attr('height', y(s.p25) - y(s.p75))
+      .attr('rx', 4)
+      .attr('fill', '#536150').attr('opacity', 0.7);
+    svg.append('line')
+      .attr('x1', x(yr)).attr('x2', x(yr) + bw)
+      .attr('y1', y(s.median)).attr('y2', y(s.median))
+      .attr('stroke', '#fcf9f5').attr('stroke-width', 2);
+    svg.append('circle').attr('cx', cx).attr('cy', y(s.mean))
+      .attr('r', 3).attr('fill', '#8d4d3b');
+  }
+  const xa = d3.axisBottom(x);
+  const ya = d3.axisLeft(y).ticks(6).tickFormat(d3.format('.2f'));
+  svg.append('g').attr('class','axis').attr('transform', `translate(0,${m.t + ih})`).call(xa);
+  svg.append('g').attr('class','axis').attr('transform', `translate(${m.l},0)`).call(ya);
+  svg.append('text').attr('x', -((m.t + ih) / 2)).attr('y', 14).attr('transform','rotate(-90)').attr('text-anchor','middle').text('Mean NDVI');
+}
+
+function drawLine() {
+  const svg = d3.select('#lineChart');
+  svg.selectAll('*').remove();
+  const node = svg.node();
+  const { w, h, iw, ih, m } = chartSize(node, { t: 18, r: 110, b: 30, l: 44 });
+  svg.attr('viewBox', `0 0 ${w} ${h}`);
+  const years = [2007, 2014, 2020, 2024];
+  const x = d3.scaleLinear().domain([2006, 2025]).range([m.l, m.l + iw]);
+  const allVals = analysis.class_totals.flatMap(c => years.map(y => c[`area_${y}`]));
+  const y = d3.scaleLinear().domain([0, d3.max(allVals)]).nice().range([m.t + ih, m.t]);
+
+  svg.selectAll('line.grid-line')
+    .data(y.ticks(5)).enter().append('line').attr('class','grid-line')
+    .attr('x1', m.l).attr('x2', m.l + iw).attr('y1', d => y(d)).attr('y2', d => y(d));
+
+  const line = d3.line().x(d => x(d.year)).y(d => y(d.area));
+  for (const c of analysis.class_totals) {
+    const series = years.map(yr => ({ year: yr, area: c[`area_${yr}`] }));
+    const col = colorByName[c.class] || '#888';
+    svg.append('path').datum(series)
+      .attr('fill','none').attr('stroke', col).attr('stroke-width', 2.4)
+      .attr('d', line);
+    svg.selectAll(null).data(series).enter().append('circle')
+      .attr('cx', d => x(d.year)).attr('cy', d => y(d.area)).attr('r', 3.5).attr('fill', col);
+    const last = series[series.length - 1];
+    svg.append('text').attr('x', x(last.year) + 8).attr('y', y(last.area) + 4)
+      .attr('fill', col).attr('font-weight', 600).attr('font-size', 12).text(c.class);
+  }
+  const xa = d3.axisBottom(x).tickValues(years).tickFormat(d3.format('d'));
+  const ya = d3.axisLeft(y).ticks(5).tickFormat(d => `${d.toLocaleString()}`);
+  svg.append('g').attr('class','axis').attr('transform', `translate(0,${m.t + ih})`).call(xa);
+  svg.append('g').attr('class','axis').attr('transform', `translate(${m.l},0)`).call(ya);
+  svg.append('text').attr('x', -((m.t + ih) / 2)).attr('y', 8).attr('transform','rotate(-90)').attr('text-anchor','middle').text('Area (km²)');
+
+  svg.append('line').attr('x1', x(+currentYear)).attr('x2', x(+currentYear))
+    .attr('y1', m.t).attr('y2', m.t + ih)
+    .attr('stroke', '#8d4d3b').attr('stroke-width', 1.5).attr('stroke-dasharray', '4,3');
+}
+
+let ndviMap = null, ndviLayer = null;
+const ndviCache = new Map();
+
+function ndviColor(byteVal) {
+  if (byteVal === 0 || byteVal === null || isNaN(byteVal)) return null;
+  const v = (byteVal - 1) / 253 * 2 - 1;
+  const stops = [
+    [-0.2, [102,   0,  22]],
+    [ 0.0, [179, 127, 126]],
+    [ 0.2, [255, 254, 230]],
+    [ 0.4, [128, 160, 143]],
+    [ 0.6, [  0,  66,  56]],
+  ];
+  let lo = stops[0], hi = stops[stops.length - 1];
+  for (let i = 0; i < stops.length - 1; i++) {
+    if (v >= stops[i][0] && v <= stops[i+1][0]) { lo = stops[i]; hi = stops[i+1]; break; }
+  }
+  if (v <= stops[0][0]) return `rgb(${stops[0][1].join(',')})`;
+  if (v >= stops[stops.length-1][0]) return `rgb(${stops[stops.length-1][1].join(',')})`;
+  const t = (v - lo[0]) / (hi[0] - lo[0]);
+  const c = lo[1].map((x, i) => Math.round(x + t * (hi[1][i] - x)));
+  return `rgb(${c.join(',')})`;
+}
+
+async function loadNdvi(year) {
+  if (ndviCache.has(year)) return ndviCache.get(year);
+  const buf = await fetch(`data/raster/ndvi_${year}.tif`).then(r => r.arrayBuffer());
+  const georaster = await parseGeoraster(buf);
+  const layer = new GeoRasterLayer({
+    georaster, opacity: 0.9, resolution: 256,
+    pixelValuesToColorFn: vals => ndviColor(vals[0]),
+  });
+  ndviCache.set(year, layer);
+  return layer;
+}
+
+async function setMiniMapYear(year) {
+  document.getElementById('mapYear').textContent = year;
+  if (!ndviMap) return;
+  try {
+    const next = await loadNdvi(year);
+    if (ndviLayer) ndviLayer.remove();
+    next.addTo(ndviMap);
+    ndviLayer = next;
+  } catch (e) { console.error('NDVI raster load failed', e); }
+}
+
+function drawMiniMap() {
+  ndviMap = L.map('miniMap', { zoomControl: false, attributionControl: true }).setView([40.1, 9.0], 7);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OSM, CARTO · NDVI: S. Dahlman (2025)',
+    subdomains: 'abcd', maxZoom: 12,
+  }).addTo(ndviMap);
+  const bg = L.geoJSON(geo);
+  ndviMap.fitBounds(bg.getBounds(), { padding: [10, 10] });
+  setMiniMapYear(currentYear);
+}
+</script>
+</body>
+</html>

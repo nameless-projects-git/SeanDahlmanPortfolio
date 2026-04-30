@@ -175,18 +175,7 @@
     <a href="a_classification.html"
        class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_24px_rgba(69,75,69,0.05)] flex flex-col group cursor-pointer hover:-translate-y-1 transition-transform duration-300">
       <div class="h-48 rounded-lg mb-md bg-surface-container overflow-hidden">
-        <svg class="preview-svg" viewBox="0 0 280 80" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect width="280" height="80" fill="#d97f00"/>
-          <path d="M0,52 C40,48 80,60 130,56 C180,52 220,62 280,58 L280,80 L0,80 Z" fill="#3abf66"/>
-          <path d="M0,30 C50,26 90,34 140,30 C190,26 230,34 280,30 L280,52 L0,52 Z" fill="#d9bf0d"/>
-          <rect x="0" y="0" width="280" height="22" fill="#3abf66"/>
-          <path d="M-2,40 Q70,38 140,42 T282,42" stroke="#1c1c1a" stroke-width="1.2" fill="none" opacity="0.45"/>
-          <path d="M120,15 L130,55 L165,60 L160,18 Z" fill="#c44296" opacity="0.85"/>
-          <path d="M218,68 Q244,74 280,72 L280,80 L218,80 Z" fill="#00b6f1"/>
-        </svg>
-      </div>
-      <div class="flex items-center gap-xs mb-sm">
-        <span class="bg-primary-container/30 text-on-primary-fixed-variant px-sm py-xs rounded-full font-label-sm text-label-sm uppercase tracking-widest">A · Map</span>
+        <img src="thumbs/thumb_classification.jpg" alt="Sardinian land-use classification preview" class="w-full h-full object-cover"/>
       </div>
       <h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Land use classification</h2>
       <p class="font-body-md text-body-md text-on-surface-variant mb-lg flex-1">
@@ -205,28 +194,7 @@
     <a href="b_ndvi_temporal.html"
        class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_24px_rgba(69,75,69,0.05)] flex flex-col group cursor-pointer hover:-translate-y-1 transition-transform duration-300">
       <div class="h-48 rounded-lg mb-md bg-surface-container overflow-hidden">
-        <svg class="preview-svg" viewBox="0 0 280 80" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <filter id="ndviNoise" x="0" y="0">
-              <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7"/>
-              <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.6 -0.3"/>
-              <feComposite in2="SourceGraphic" operator="in"/>
-            </filter>
-            <linearGradient id="ndviRamp" x1="0" y1="1" x2="1" y2="0">
-              <stop offset="0%" stop-color="#660016"/>
-              <stop offset="35%" stop-color="#b37f7e"/>
-              <stop offset="55%" stop-color="#fffee6"/>
-              <stop offset="78%" stop-color="#80a08f"/>
-              <stop offset="100%" stop-color="#004238"/>
-            </linearGradient>
-          </defs>
-          <rect width="280" height="80" fill="url(#ndviRamp)"/>
-          <rect width="280" height="80" fill="#fff" filter="url(#ndviNoise)" opacity="0.35"/>
-          <path d="M40,62 Q90,40 130,52 T240,28" stroke="#1c1c1a" stroke-width="0.8" fill="none" opacity="0.4"/>
-        </svg>
-      </div>
-      <div class="flex items-center gap-xs mb-sm">
-        <span class="bg-secondary-container/30 text-on-secondary-container px-sm py-xs rounded-full font-label-sm text-label-sm uppercase tracking-widest">B · Dashboard</span>
+        <img src="thumbs/thumb_ndvi.jpg" alt="Sardinian NDVI preview" class="w-full h-full object-cover"/>
       </div>
       <h2 class="font-headline-md text-headline-md text-on-surface mb-sm">NDVI temporal change</h2>
       <p class="font-body-md text-body-md text-on-surface-variant mb-lg flex-1">
@@ -262,9 +230,6 @@
           <rect x="266" y="60" width="8" height="12" fill="#d97f00"/>
           <rect x="266" y="72" width="8" height="6"  fill="#00b6f1"/>
         </svg>
-      </div>
-      <div class="flex items-center gap-xs mb-sm">
-        <span class="bg-tertiary-fixed text-on-tertiary-fixed px-sm py-xs rounded-full font-label-sm text-label-sm uppercase tracking-widest">C · Sankey</span>
       </div>
       <h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Land use transitions</h2>
       <p class="font-body-md text-body-md text-on-surface-variant mb-lg flex-1">

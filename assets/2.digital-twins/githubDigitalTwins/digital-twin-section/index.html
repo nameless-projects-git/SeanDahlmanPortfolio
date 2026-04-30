@@ -495,7 +495,7 @@
   }
 
   .info-section-label {
-    font-size: calc(11px * var(--scale));
+    font-size: calc(12px * var(--scale));
     font-weight: 500;
     color: var(--sand);
     letter-spacing: 0.14em;
@@ -523,19 +523,19 @@
 
   .info-section h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: calc(17px * var(--scale));
+    font-size: calc(22px * var(--scale));
     font-weight: 600;
     color: var(--bone);
-    margin-bottom: calc(6px * var(--scale));
+    margin-bottom: calc(8px * var(--scale));
     line-height: 1.2;
   }
 
   .info-caption {
-    font-size: calc(12.5px * var(--scale));
+    font-size: calc(16.5px * var(--scale));
     font-weight: 300;
     color: var(--sand);
-    line-height: 1.5;
-    margin-bottom: calc(10px * var(--scale));
+    line-height: 1.55;
+    margin-bottom: calc(12px * var(--scale));
   }
 
   .chart-img {
@@ -899,12 +899,13 @@
   <div class="info-panel">
     <div class="info-header">
       <div class="info-title">
-        <span id="page-eyebrow">Page 1 of 2 · Observed Impact</span>
+        <span id="page-eyebrow">Page 1 of 3 · Observed Impact</span>
         <div id="page-heading">What the fire did</div>
       </div>
       <div class="page-indicator">
         <div class="page-dot active" data-page="0"></div>
         <div class="page-dot" data-page="1"></div>
+        <div class="page-dot" data-page="2"></div>
       </div>
     </div>
 
@@ -1439,7 +1440,7 @@ function statCard(kind, value, label, delay=0) {
 const PAGES = [
   {
     id: 'observed',
-    eyebrow: 'Page 1 of 2 · Observed Impact',
+    eyebrow: 'Page 1 of 3 · Observed Impact',
     heading: 'What the fire did',
     nextLabel: 'Treatment Benefits',
     prevLabel: null,
@@ -1447,15 +1448,23 @@ const PAGES = [
   },
   {
     id: 'treatment',
-    eyebrow: 'Page 2 of 2 · Treatment Benefits',
+    eyebrow: 'Page 2 of 3 · Treatment Benefits',
     heading: 'What the burn would prevent',
-    nextLabel: null,
+    nextLabel: 'Risk Reduction',
     prevLabel: 'Observed Impact',
     render: () => buildPage2()
+  },
+  {
+    id: 'risk',
+    eyebrow: 'Page 3 of 3 · Risk Reduction',
+    heading: 'Where the gains land',
+    nextLabel: null,
+    prevLabel: 'Treatment Benefits',
+    render: () => buildPage3()
   }
 ];
 
-// ── PAGE 1: Observed Impact (Untreated / what actually happened) ──
+// ── PAGE 1: Observed Impact ──
 function buildPage1() {
   return `
     <div class="info-section">
@@ -1475,7 +1484,12 @@ function buildPage1() {
       </p>
       ${svgNdvi()}
     </div>
+  `;
+}
 
+// ── PAGE 2: Treatment Benefits ──
+function buildPage2() {
+  return `
     <div class="info-section">
       <div class="info-section-label canopy-label">Crown Fire Reduction</div>
       <h3>Active crown fire eliminated</h3>
@@ -1486,12 +1500,7 @@ function buildPage1() {
         ${svgDonut(79.1, { color: SVG_COLORS.canopyL, label: 'Crown Fire ↓' })}
       </div>
     </div>
-  `;
-}
 
-// ── PAGE 2: Treatment Benefits ──
-function buildPage2() {
-  return `
     <div class="info-section">
       <div class="info-section-label canopy-label">Top Treatment Effects</div>
       <h3>Measurable reductions across the board</h3>
@@ -1505,7 +1514,12 @@ function buildPage2() {
         { label: 'Max Flame Length',      value: 55.0, display: '55.0%', color: SVG_COLORS.ember },
       ], 100)}
     </div>
+  `;
+}
 
+// ── PAGE 3: Risk Reduction & Bottom Line ──
+function buildPage3() {
+  return `
     <div class="info-section">
       <div class="info-section-label canopy-label">High-Risk Area Reduction</div>
       <h3>Extreme zones cut nearly in half</h3>

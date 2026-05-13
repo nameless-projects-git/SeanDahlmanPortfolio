@@ -2,7 +2,7 @@
 
 Personal portfolio site showcasing GIS, remote sensing, GeoAI, and spatial programming work.
 
-**[→ View Live Site](https://seanvdahlman.github.io/)**
+**[→ View Live Site]([https://seanvdahlman.github.io/](https://nameless-projects-git.github.io/SeanDahlmanPortfolio/))**
 
 ## About
 
